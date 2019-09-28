@@ -19,18 +19,32 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4463913192236704}
-  - component: {fileID: 65318329273764602}
   - component: {fileID: 114864994600690618}
   m_Layer: 0
   m_Name: KidHand_v2
   m_TagString: Untagged
-  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1669832445660728
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4097352466752236}
+  m_Layer: 0
+  m_Name: Pivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &1782600719683080
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
@@ -40,6 +54,7 @@ GameObject:
   - component: {fileID: 23488863685772648}
   - component: {fileID: 95661525848276936}
   - component: {fileID: 114874857644177594}
+  - component: {fileID: 65132660900433554}
   m_Layer: 0
   m_Name: MaoSobrinho
   m_TagString: Untagged
@@ -47,6 +62,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &4097352466752236
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1669832445660728}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4168037258577194}
+  m_Father: {fileID: 4463913192236704}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4168037258577194
 Transform:
   m_ObjectHideFlags: 1
@@ -54,10 +83,10 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1782600719683080}
   m_LocalRotation: {x: -0, y: -0, z: 0.796577, w: 0.6045371}
-  m_LocalPosition: {x: 0.044, y: 0.035, z: 0.113}
+  m_LocalPosition: {x: 0.044, y: 0.035000026, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
-  m_Father: {fileID: 4463913192236704}
+  m_Father: {fileID: 4097352466752236}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 105.60901}
 --- !u!4 &4463913192236704
@@ -67,10 +96,10 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1536569348422516}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.064, y: 0.7879455, z: 2.69}
+  m_LocalPosition: {x: -0.064, y: 0.7879455, z: 1.275}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4168037258577194}
+  - {fileID: 4097352466752236}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -116,18 +145,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1782600719683080}
   m_Mesh: {fileID: 4300000, guid: 1e59e5b636ec3054aa845f57c3090785, type: 3}
---- !u!65 &65318329273764602
+--- !u!65 &65132660900433554
 BoxCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1536569348422516}
+  m_GameObject: {fileID: 1782600719683080}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.14882433, y: 0.067314684, z: 1.1159632}
-  m_Center: {x: 0, y: 0.059309617, z: -0.42793357}
+  m_Size: {x: 0.1597941, y: 0.28596362, z: 2.4694936}
+  m_Center: {x: 0.01418592, y: 0.12167506, z: -1.145696}
 --- !u!95 &95661525848276936
 Animator:
   serializedVersion: 3
@@ -158,8 +187,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  pivot: {fileID: 4097352466752236}
   stealDuration: 5
   returnDuration: 1
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   initPos: {x: 0, y: 0, z: 0}
 --- !u!114 &114874857644177594
 MonoBehaviour:

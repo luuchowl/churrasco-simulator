@@ -4,7 +4,14 @@ ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Camera
+    100004: Cube
+    100006: Lamp
     400000: //RootNode
+    400002: Camera
+    400004: Cube
+    400006: Lamp
+    2000000: Camera
     2100000: Material
     2100002: Material__Untitled
     2100004: Material_001__Untitled
@@ -12,11 +19,19 @@ ModelImporter:
     2100008: Madeira__Untitled
     2100010: Screen__Untitled
     2100012: Light__Untitled
+    2100014: Material.001
+    2100016: Madeira Light
+    2100018: Madeira
+    2100020: Screen
+    2100022: Light
     2300000: //RootNode
+    2300002: Cube
     3300000: //RootNode
+    3300002: Cube
     4300000: Cube
     7400000: Default Take
     9500000: //RootNode
+    10800000: Lamp
     2186277476908879412: ImportLogs
   externalObjects: {}
   materials:

@@ -22,6 +22,28 @@ ModelImporter:
     100032: Bone_014
     100034: Bone_015
     100036: Cylinder
+    100038: Bone.001
+    100040: Bone.002
+    100042: Bone.002_end
+    100044: Bone.003
+    100046: Bone.004
+    100048: Bone.005
+    100050: Bone.005_end
+    100052: Bone.006
+    100054: Bone.007
+    100056: Bone.008
+    100058: Bone.008_end
+    100060: Bone.009
+    100062: Bone.010
+    100064: Bone.011
+    100066: Bone.011_end
+    100068: Bone.012
+    100070: Bone.013
+    100072: Bone.014
+    100074: Bone.014_end
+    100076: Bone.015
+    100078: Camera
+    100080: Lamp
     400000: //RootNode
     400002: Armature
     400004: Bone
@@ -41,12 +63,37 @@ ModelImporter:
     400032: Bone_014
     400034: Bone_015
     400036: Cylinder
+    400038: Bone.001
+    400040: Bone.002
+    400042: Bone.002_end
+    400044: Bone.003
+    400046: Bone.004
+    400048: Bone.005
+    400050: Bone.005_end
+    400052: Bone.006
+    400054: Bone.007
+    400056: Bone.008
+    400058: Bone.008_end
+    400060: Bone.009
+    400062: Bone.010
+    400064: Bone.011
+    400066: Bone.011_end
+    400068: Bone.012
+    400070: Bone.013
+    400072: Bone.014
+    400074: Bone.014_end
+    400076: Bone.015
+    400078: Camera
+    400080: Lamp
+    2000000: Camera
     2100000: Material_001
+    2100002: Material.001
     2300000: //RootNode
     3300000: //RootNode
     4300000: Cylinder
     7400000: Default Take
     9500000: //RootNode
+    10800000: Lamp
     13700000: Cylinder
     2186277476908879412: ImportLogs
   externalObjects: {}

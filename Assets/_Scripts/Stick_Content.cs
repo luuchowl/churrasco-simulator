@@ -30,15 +30,7 @@ public class Stick_Content : Cookable {
 			food.GetComponent<Rigidbody>().isKinematic = true;
 			food.transform.SetParent(ingredientsPivots[counter]);
 			food.transform.localRotation = Quaternion.Euler(Random.insideUnitSphere * 360f);
-
-			//Physics.IgnoreCollision(food.col, col, true);
-
-			//foreach (var item in foods) {
-			//	if(item != food) {
-			//		Physics.IgnoreCollision(item.col, food.col, true);
-			//	}
-			//}
-
+			
 			counter++;
 		}
 	}

@@ -5,8 +5,10 @@ using UnityEngine;
 public class StealChurras : MonoBehaviour {
 
     public Transform target;
-    public float stealDuration = 1;
+	public Transform pivot;
+	public float stealDuration = 1;
     public float returnDuration = 1;
+	public AnimationCurve curve = AnimationCurve.Linear(0, 0, 1, 1);
 
 	[HideInInspector] public Vector3 initPos;
 
@@ -18,6 +20,7 @@ public class StealChurras : MonoBehaviour {
 	private float step;
 	private bool grabbed;
 	private Food food;
+	private Stick_Content stick;
 
 	private void OnEnable() {
 		grill = Game_Manager.Instance.levelController.grill;
@@ -29,6 +32,9 @@ public class StealChurras : MonoBehaviour {
 	}
 
 	void SelectNewTarget() {
+		food = null;
+		stick = null;
+
 		int id = Random.Range(0, grill.objectsOnGrill.Count);
 		target = grill.objectsOnGrill[id].transform;
 
@@ -36,48 +42,51 @@ public class StealChurras : MonoBehaviour {
 		lastTargetPosition = target.position;
 		transform.forward = target.position - transform.position;
 		food = target.GetComponent<Food>();
+
+		if(food == null) {
+			stick = target.GetComponent<Stick_Content>();
+		}
 	}
 
 	// Update is called once per frame
 	void Update() {
 		if(target != null) {
 			Vector3 handPosition = transform.position;
+			counter += step * Time.deltaTime;
 
 			if (!returning) {
-				if (player.grabObject != null && target == player.grabObject.transform) {
-					StartReturning();
-					//if (grill.objectsOnGrill.Count > 0) {
-					//	SelectNewTarget();
-					//} else {
-					//	returning = true;
-					//}
-				} else {
-					counter += step * Time.deltaTime;
-					handPosition = Vector3.Lerp(initPos, target.position, counter);
+				float value = curve.Evaluate(counter);
+				handPosition = Vector3.Lerp(initPos, lastTargetPosition, value);
 
-					if(counter >= 1) {
-						StartReturning();
-						target.SetParent(transform);
-						grabbed = true;
-						target.GetComponent<Rigidbody>().isKinematic = true;
-						target.GetComponent<Collider>().enabled = false;
-					}
+				if (player.grabObject != null && (target == player.grabObject.transform || (food != null && food.stick != null && food.stick.gameObject == player.grabObject))) {
+					StartReturning();
+					lastTargetPosition = handPosition;
+				} else if(value >= 1) {
+					Debug.Log("Foi");
+					StartReturning();
+					target.SetParent(pivot.transform);
+					grabbed = true;
+					target.GetComponent<Rigidbody>().isKinematic = true;
+					target.GetComponent<Collider>().enabled = false;
+					counter = 0;
+					lastTargetPosition = handPosition;
 				}
 			} else {
-				counter -= step * Time.deltaTime;
-				handPosition = Vector3.Lerp(initPos, lastTargetPosition, counter);
+				float value = curve.Evaluate(counter);
+				handPosition = Vector3.Lerp(lastTargetPosition, initPos, counter);
 				
-				if (counter <= 0) {
+				if (value >= 1) {
 					if (grabbed) {
 						target.transform.SetParent(null);
 						target.GetComponent<Poolable>().ReturnToPool();
 						target.GetComponent<Collider>().enabled = true;
 					}
+
 					Destroy(this.gameObject);
 				}
 			}
 
-			transform.position = Vector3.Lerp(transform.position, handPosition, 0.2f);
+			pivot.transform.position = handPosition;
 		} else {
 			Destroy(this.gameObject);
 		}
@@ -85,7 +94,6 @@ public class StealChurras : MonoBehaviour {
 
 	public void StartReturning() {
 		returning = true;
-		lastTargetPosition = transform.position;
 		step = 1 / returnDuration;
 	}
 
