@@ -2,6 +2,11 @@
 {
 	Properties
 	{
+        _Color ("Main Color", Color) = (.5,.5,.5,1)
+        _OutlineColor ("Outline Color", Color) = (0,0,0,1)
+        _Outline ("Outline width", Range (.002, 0.03)) = .005
+        _Factor("Factor", Range(0, 3)) = 0
+
 		_MainTex ("Texture", 2D) = "white" {}
         _Factor("Factor", Range(0, 5)) = 0
         _Color0 ("Color A", Color) = (1, 1, 1, 1)
