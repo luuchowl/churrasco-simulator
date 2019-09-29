@@ -26,15 +26,21 @@ public class Orders_Manager : MonoBehaviour {
 	[BoxTitle("Misc")]
 	public List<Order_Content> currentOrders = new List<Order_Content>();
 	public UnityEvent startGame = new UnityEvent();
-
-	private int points;
+	
 	private UI_TransformAnim pointsAnim;
 	private int wrongs;
 	private Player_Controller player;
 
+	private void OnEnable() {
+		Game_Manager.Instance.addPointsAction += AddPoints;
+	}
+
+	private void OnDisable() {
+		Game_Manager.Instance.addPointsAction -= AddPoints;
+	}
+
 	private void Start() {
-		points = 0;
-		pointsText.text = "" + points;
+		pointsText.text = "" + Game_Manager.Instance.GetPoints();
 		pointsAnim = pointsText.GetComponent<UI_TransformAnim>();
 		
 		fadeImg.color = Color.clear;
@@ -108,10 +114,8 @@ public class Orders_Manager : MonoBehaviour {
 		return false;
 	}
 
-	public void AddPoints(int amount) {
-		points += amount;
-		points = points < 0 ? 0 : points;
-		pointsText.text = "" + points;
+	private void AddPoints(int amount) {
+		pointsText.text = "" + Game_Manager.Instance.GetPoints();
 		pointsAnim.PlayAnim();
 	}
 
@@ -126,7 +130,7 @@ public class Orders_Manager : MonoBehaviour {
 			
 			//If it is, then check if the ingredients are the same
 			for (int j = 0; j < order.ingredients.Count; j++) {
-				//Commnet this and uncomment the if Belowe if you want the order of the ingredients to matter
+				//Comment this and uncomment the "if" below if you want the order of the ingredients to matter
 				if (currentOrders[i].order.ingredients.Contains(order.ingredients[j])) {
 					points++;
 				}

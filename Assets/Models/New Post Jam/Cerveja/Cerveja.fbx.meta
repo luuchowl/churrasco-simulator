@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: 71ef84e506472504cb308a80ededc221
+guid: 50942d98f50828f45a341f9361469290
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: Camera
-    100002: Cylinder
-    100004: //RootNode
+    100002: //RootNode
+    100004: Cylinder
     400000: Camera
-    400002: Cylinder
-    400004: //RootNode
+    400002: //RootNode
+    400004: Cylinder
     2000000: Camera
-    2100000: Material
+    2100000: Material.001
     2300000: Cylinder
     3300000: Cylinder
     4300000: Cylinder
@@ -45,7 +45,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 10
+    globalScale: 6
     meshCompression: 0
     addColliders: 0
     importVisibility: 1

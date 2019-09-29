@@ -13,10 +13,10 @@ public class Plate : MonoBehaviour {
 
 			if (CheckIfRightCombination(stick)) {
 				Debug.Log("Correct!");
-				Game_Manager.Instance.levelController.orders.AddPoints(correctPoints);
+				Game_Manager.Instance.AddPoints(correctPoints);
 			} else {
 				Debug.Log("Incorrect...");
-				Game_Manager.Instance.levelController.orders.AddPoints(wrongPoints);
+				Game_Manager.Instance.AddPoints(wrongPoints);
 				Game_Manager.Instance.levelController.orders.AddWrong();
 			}
 
