@@ -27,6 +27,6 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _Intensity: 0.34
+    - _Intensity: 0.245
     m_Colors:
-    - _Color: {r: 1, g: 0.27568492, b: 0.12549019, a: 1}
+    - _Color: {r: 1, g: 0.3119193, b: 0.12549019, a: 1}
