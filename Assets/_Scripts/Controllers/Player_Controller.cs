@@ -13,6 +13,7 @@ public class Player_Controller : MonoBehaviour {
 	[Range(0, 1)]
 	public float opacityWhenTransparent = .5f;
 	public Renderer[] rendToMakeTransparent;
+	public GameObject target;
 
 	[HideInInspector]
 	public bool acting;
@@ -45,6 +46,12 @@ public class Player_Controller : MonoBehaviour {
 
 			if (Physics.Raycast(ray, out hit, 10, whatToHit)) {
 				newPos = hit.point;
+
+				if (hit.collider.tag != "HandCollider") {
+					target.SetActive(true);
+				} else {
+					target.SetActive(false);
+				}
 			}
 
 			transform.position = Vector3.Lerp(transform.position, newPos, smoothness);

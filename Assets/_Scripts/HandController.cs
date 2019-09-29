@@ -33,7 +33,8 @@ public class HandController : MonoBehaviour {
 
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, collisionMask))
         {
-            Debug.DrawRay(cameraMain.transform.position,(hit.point -cameraMain.transform.position) * hit.distance, Color.yellow);
+
+			Debug.DrawRay(cameraMain.transform.position,(hit.point -cameraMain.transform.position) * hit.distance, Color.yellow);
             Debug.Log("Did Hit");
             if(!animating){
                 handPivot.transform.position = cameraMain.transform.position + (hit.point - cameraMain.transform.position) + (hit.point - cameraMain.transform.position).normalized * handDistance ;
@@ -55,8 +56,6 @@ public class HandController : MonoBehaviour {
             Debug.DrawRay(cameraMain.transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.white);
             Debug.Log("Did not Hit");
         }
-
-
 	}
    
     IEnumerator grabAnimationRoutine(Vector3 hitPos){
