@@ -33,7 +33,7 @@
 			struct v2f
 			{
 				float2 uv : TEXCOORD0;
-                //float4 pos : COLOR;
+                float4 pos : COLOR;
 				UNITY_FOG_COORDS(1)
 				float4 vertex : SV_POSITION;
 			};
@@ -52,6 +52,7 @@
 			{
 				v2f o;
 				o.vertex = UnityObjectToClipPos(v.vertex);
+                o.pos = mul (unity_ObjectToWorld, v.vertex);
 				o.uv = TRANSFORM_TEX(v.uv, _MainTex);
                 //o.pos = o.vertex;
 				UNITY_TRANSFER_FOG(o,o.vertex);
@@ -62,7 +63,7 @@
 			{
 				// sample the texture
 				//fixed4 col = tex2D(_MainTex, i.uv) * _Color + tex2D(_EmissiveTex, i.uv + _Time.xx * 0.2) * _EmissiveColor * (sin(_Time.x * 40) + 1) / 2;
-                fixed4 col = tex2D(_MainTex, i.uv) * _Color + tex2D(_EmissiveTex, i.uv ) * _EmissiveColor * (sin((_Time.x + tex2D(_NoiseTex, i.vertex.xy / 1000).r)* 10 )*25);
+                fixed4 col = tex2D(_MainTex, i.uv) * _Color + tex2D(_EmissiveTex, i.uv ) * _EmissiveColor * (sin((_Time.x + tex2D(_NoiseTex, i.pos.xy / 5).r)* 10 )*25);
                 //fixed4 col = tex2D(_NoiseTex, i.vertex.xy / 1000).r; 
 				// apply fog
 				UNITY_APPLY_FOG(i.fogCoord, col);
