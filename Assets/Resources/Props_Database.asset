@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d243a267ee7f9c49bf6c6df81fc17e4, type: 3}
+  m_Name: Props_Database
+  m_EditorClassIdentifier: 
+  ground:
+  - {fileID: 4333772924092764, guid: 95ebfff69a4a17f478fafbe44fe541b1, type: 2}
+  wall:
+  - {fileID: 4218254098408026, guid: c5f0d2e344d2ea34aa7456b50c6c2cfd, type: 2}
+  - {fileID: 4326328800075686, guid: e09ca07502470ea4aa9d94330268da1b, type: 2}
+  bbq:
+  - {fileID: 4075947768252722, guid: e91197c02b939554cb1925145036b786, type: 2}
+  table:
+  - {fileID: 4625305808364946, guid: 040c6e1e19fd2634a9dea50fab1536ee, type: 2}
+  - {fileID: 4625305808364946, guid: 253bc567490c0c944944c5fcb84d3ae2, type: 2}
