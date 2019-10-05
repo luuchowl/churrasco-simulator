@@ -911,10 +911,10 @@ RectTransform:
   m_Father: {fileID: 1900542000}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.116835445}
-  m_AnchorMax: {x: 1, y: 1.0001266}
-  m_AnchoredPosition: {x: 0, y: -22.450012}
-  m_SizeDelta: {x: 0, y: -44.9}
+  m_AnchorMin: {x: 0, y: 0.11682989}
+  m_AnchorMax: {x: 1, y: 0.88907474}
+  m_AnchoredPosition: {x: 0, y: 0.0000019073486}
+  m_SizeDelta: {x: 0, y: 0.0000038146973}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1030841060
 MonoBehaviour:
@@ -1067,10 +1067,10 @@ RectTransform:
   m_Father: {fileID: 1900542000}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.116835445}
-  m_AnchorMax: {x: 1, y: 1.0001266}
-  m_AnchoredPosition: {x: 0, y: 152}
-  m_SizeDelta: {x: 0, y: -304}
+  m_AnchorMin: {x: 0, y: 0.8890741}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1218824259
 MonoBehaviour:
@@ -1119,7 +1119,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 27.4
+  m_fontSize: 32
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1969,6 +1969,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverText: {fileID: 1712244527}
   sceneToReturn: Final
+  baseURL: https://luuchowl.com/churras-sim
   leaderboardPanel: {fileID: 1900541999}
   topPlayers: {fileID: 1030841060}
   playerPoints: {fileID: 213819142}
