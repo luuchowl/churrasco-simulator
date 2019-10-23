@@ -27,7 +27,7 @@ public class Orders_Manager : MonoBehaviour {
 	public List<Order_Content> currentOrders = new List<Order_Content>();
 	public UnityEvent startGame = new UnityEvent();
 	
-	private UI_TransformAnim pointsAnim;
+	private Animator pointsAnim;
 	private int wrongs;
 	private Player_Controller player;
 
@@ -41,7 +41,7 @@ public class Orders_Manager : MonoBehaviour {
 
 	private void Start() {
 		pointsText.text = "" + Game_Manager.Instance.GetPoints();
-		pointsAnim = pointsText.GetComponent<UI_TransformAnim>();
+		pointsAnim = pointsText.GetComponent<Animator>();
 		
 		fadeImg.color = Color.clear;
 		pointsText.gameObject.SetActive(false);
@@ -116,7 +116,7 @@ public class Orders_Manager : MonoBehaviour {
 
 	private void AddPoints(int amount) {
 		pointsText.text = "" + Game_Manager.Instance.GetPoints();
-		pointsAnim.PlayAnim();
+		pointsAnim.SetTrigger("PointAdded");
 	}
 
 	private bool CheckIfOrderIsRight(Order order) {

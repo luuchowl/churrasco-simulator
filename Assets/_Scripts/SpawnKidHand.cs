@@ -13,6 +13,10 @@ public class SpawnKidHand : MonoBehaviour {
 	[Range(0, 100)] public float dogChanceSpawn;
 	public GameObject dogHandPrefab;
 
+	private void Awake() {
+		Game_Manager.Instance.levelController.menu.gameStarted.AddListener(StartSpawners);
+	}
+
 	private void Update() {
 		if (Input.GetKeyDown("a")) {
 			SpawnHand();

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using NaughtyAttributes;
 
 public class Player_Controller : MonoBehaviour {
 	public LayerMask whatToHit;
@@ -15,8 +16,9 @@ public class Player_Controller : MonoBehaviour {
 	public Renderer[] rendToMakeTransparent;
 	public GameObject target;
 
-	[HideInInspector]
-	public bool acting;
+	[BoxTitle("Debug")]
+	[HideInInspector] public bool acting;
+	[ReadOnly] public Collider hitObject;
 
 	private Camera cam;
 	private Vector3 newPos;
@@ -49,8 +51,10 @@ public class Player_Controller : MonoBehaviour {
 
 				if (hit.collider.tag != "HandCollider") {
 					target.SetActive(true);
+					hitObject = hit.collider;
 				} else {
 					target.SetActive(false);
+					hitObject = null;
 				}
 			}
 

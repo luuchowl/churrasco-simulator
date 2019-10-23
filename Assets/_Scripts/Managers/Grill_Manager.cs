@@ -18,7 +18,6 @@ public class Grill_Manager : MonoBehaviour {
 	}
 
 	private void OnCollisionExit(Collision other) {
-		Debug.Log(other.collider.name);
 		if (other.gameObject.CompareTag("Ingredient") || other.gameObject.CompareTag("Stick")) {
 			RemoveFromGrill(other.gameObject.GetComponent<Cookable>());
 		}

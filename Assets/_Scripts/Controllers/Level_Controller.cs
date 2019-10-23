@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Level_Controller : MonoBehaviour {
+	public Camera mainCamera;
 	public Player_Controller player;
+	public MainMenu_Controller menu;
 	public Orders_Manager orders;
 	public Speech_Manager speeches;
 	public Grill_Manager grill;

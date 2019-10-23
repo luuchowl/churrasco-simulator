@@ -7,7 +7,7 @@ public class Grabber : MonoBehaviour {
 	public Transform handPivot;
 	public Transform normalGrabPivot;
 	public Transform closeHandGrabPivot;
-    public LayerMask collisionMask;
+    public LayerMask grabMask;
 	[BoxTitle("Normal Grab")]
 	public AnimationCurve grabCurveDown;
 	public AnimationCurve grabCurveUp;
@@ -18,12 +18,11 @@ public class Grabber : MonoBehaviour {
 	public AnimationCurve stickGrabRotationCurveDown;
 	public AnimationCurve stickGrabRotationCurveUp;
 	public float stickGrabDuration;
-	public Grill_Manager grill;
 
 	[BoxTitle("Debug")]
-	[ReadOnly]
-    public GameObject grabObject;
+	[ReadOnly] public GameObject grabObject;
 
+	private Grill_Manager grill;
 	private Rigidbody rb;
 	private Player_Controller controller;
 	private Camera cameraMain;
@@ -37,6 +36,7 @@ public class Grabber : MonoBehaviour {
 	// Use this for initialization
 	private void Awake() {
 		rb = GetComponent<Rigidbody>();
+		grill = Game_Manager.Instance.levelController.grill;
 	}
 
 	void Start () {
@@ -49,25 +49,29 @@ public class Grabber : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetMouseButtonDown(0) && !controller.acting) {
-			Ray ray = cameraMain.ScreenPointToRay(Input.mousePosition);
-			RaycastHit hit;
+			if(controller.hitObject != null && Helper.LayerMaskContains(grabMask, controller.hitObject.gameObject)) {
+				GameObject mainObj = controller.hitObject.attachedRigidbody != null ? controller.hitObject.attachedRigidbody.gameObject : controller.hitObject.gameObject;
 
-			if(Physics.Raycast(ray, out hit, 10, collisionMask)) {
 				if (!isGrabbing) {
-					FreeHandActions(hit.collider.gameObject);
+					FreeHandActions(mainObj);
 				} else {
-					if (withStick && hit.collider.tag != "Stick") {
-						StartCoroutine("GrabObjectWithStick", hit.collider.gameObject);
+					if (withStick && mainObj.tag != "Stick") {
+						Food f = mainObj.GetComponent<Food>();
+
+						if (f == null || f.stick == null) {
+							StartCoroutine("GrabObjectWithStick", mainObj);
+						} else {
+							DropObject();
+						}
 					} else {
 						DropObject();
 					}
 				}
-			} else if(isGrabbing) {
+			} else if (isGrabbing) {
 				DropObject();
 			}
 		}
-
-
+		
 		//Anim
 		if (isGrabbing) {
 			if (withStick) {
@@ -229,7 +233,6 @@ public class Grabber : MonoBehaviour {
 		handPivot.localRotation = initRot;
 		controller.acting = false;
 		finishedGrabbing = true;
-		objectToStick.GetComponent<Collider>().enabled = true;
 
 		//Enable Collisions
 		foreach (Food item in stick.foods) {

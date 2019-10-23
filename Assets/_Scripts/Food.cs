@@ -12,6 +12,7 @@ public class Food : Cookable {
 	public float timeToBurn = 5;
 	public Vector2 minMaxCooking = new Vector2(0.1f, 0.8f);
 	[BoxTitle("References")]
+	public GameObject model;
 	public GameObject readyEffect;
 	public GameObject burnSmoke;
 	[BoxTitle("Misc")]
@@ -19,37 +20,27 @@ public class Food : Cookable {
 
 	[HideInInspector] public Collider col;
 	[HideInInspector] public Rigidbody rb;
-	public Stick_Content stick;
-
-
-	private Material material;
+	[ReadOnly] public Stick_Content stick;
+	
 	private Renderer rend;
-	[SerializeField]
-	private float burnCounter;
+	private MaterialPropertyBlock propBlock;
+	[SerializeField] private float burnCounter;
 
 	// Use this for initialization
 	void Awake () {
-		rend = GetComponent<Renderer>();
-		material = new Material(rend.material);
-        material.name = "New Matt";
-		rend.material = material;
+		rend = GetComponentInChildren<Renderer>();
 		rb = GetComponent<Rigidbody>();
-		col = GetComponent<Collider>();
+		col = GetComponentInChildren<Collider>();
+
+		propBlock = new MaterialPropertyBlock();
 	}
 
 	private void OnEnable() {
 		burnCounter = 0;
-		rend.material.SetFloat("_Factor", burnCounter);
+		SetFactor(burnCounter);
 		currentStage = stage.Raw;
 		if (readyEffect != null) readyEffect.SetActive(false);
 		if (burnSmoke != null) burnSmoke.SetActive(false);
-	}
-
-	private void OnDisable() {
-		Joint joint = null;
-		if(joint = GetComponent<Joint>()) {
-			Destroy(joint);
-		}
 	}
 
 	public override void Cook() {
@@ -57,7 +48,7 @@ public class Food : Cookable {
 		
 		if (percentage < 1) {
 			burnCounter += Time.deltaTime;
-			rend.material.SetFloat("_Factor", Helper.Remap(percentage, 0, 1, 0, 3)); //3 is the max amount the "_Factor" property of the shader can go
+			SetFactor(Helper.Remap(percentage, 0, 1, 0, 3)); //3 is the max amount the "_Factor" property of the shader can go
 
 			if(percentage > minMaxCooking.x && currentStage == stage.Raw) {
 				currentStage = stage.WellDone;
@@ -67,5 +58,13 @@ public class Food : Cookable {
 				if(burnSmoke != null) burnSmoke.SetActive(true);
 			}
 		}
+	}
+
+	private void SetFactor(float value) {
+		rend.GetPropertyBlock(propBlock);
+
+		rend.material.SetFloat("_Factor", value);
+
+		rend.SetPropertyBlock(propBlock);
 	}
 }

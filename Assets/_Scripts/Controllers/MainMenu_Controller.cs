@@ -6,17 +6,25 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 
 public class MainMenu_Controller : MonoBehaviour {
+	[BoxTitle("Title Screen")]
+	public GameObject showMenuButton;
+	public GameObject pressStart;
+	[BoxTitle("Menu Screen")]
 	public GameObject menuPanel;
-	public GameObject GoToMenuButton;
 	public Slider soundSlider;
 	public Slider musicSlider;
 	public Slider sfxSlider;
 	public AudioMixer mixer;
+	[BoxTitle("Game Start")]
 	public UnityEvent gameStarted = new UnityEvent();
 
+	private LerpPosition camPos;
+
 	private void Start() {
+		camPos = Game_Manager.Instance.levelController.mainCamera.GetComponent<LerpPosition>();
+		ShowTitleScreen();
+
 		menuPanel.gameObject.SetActive(false);
-		GoToMenuButton.SetActive(true);
 
 		Sound_Manager.Instance.SetMusic(Sound_Manager.Instance.audioHolder.music.simple[0]);
 		Sound_Manager.Instance.PlaySingle(Sound_Manager.Instance.audioHolder.ambient.simple[0], true);
@@ -33,9 +41,20 @@ public class MainMenu_Controller : MonoBehaviour {
 		sfxSlider.value = Mathf.InverseLerp(-80, 20, value);
 	}
 
+	public void ShowTitleScreen() {
+		camPos.SetCameraPos(0);
+
+		pressStart.SetActive(true);
+		showMenuButton.SetActive(true);
+		menuPanel.gameObject.SetActive(false);
+	}
+
 	public void ShowMenu() {
+		camPos.SetCameraPos(1);
+
+		pressStart.SetActive(false);
+		showMenuButton.SetActive(false);
 		menuPanel.gameObject.SetActive(true);
-		GoToMenuButton.SetActive(false);
 	}
 
 	public void StartGame() {
@@ -49,6 +68,10 @@ public class MainMenu_Controller : MonoBehaviour {
 	}
 
 	public void ShowCredits() {
+		menuPanel.gameObject.SetActive(false);
+	}
+
+	public void ShowTutorial() {
 		menuPanel.gameObject.SetActive(false);
 	}
 

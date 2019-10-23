@@ -3,7 +3,7 @@
 	Properties
 	{
 		
-        _Factor("Factor", Range(0, 3)) = 0
+		[PerRendererData] _Factor("Factor", Range(0, 3)) = 0
 
         _MainTex0 ("Texture0", 2D) = "white" {}
         _Color0 ("Color 0", Color) = (1, 1, 1, 1)

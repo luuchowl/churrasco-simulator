@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4660839685990958}
   - component: {fileID: 198091778813183074}
   - component: {fileID: 199375433034715504}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,12 +36,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4104645449330932}
+  - component: {fileID: 54557028878416232}
   - component: {fileID: 114146490775553344}
   - component: {fileID: 114294802636846380}
-  - component: {fileID: 54557028878416232}
-  - component: {fileID: 33806716767955054}
-  - component: {fileID: 23615365920046810}
-  - component: {fileID: 64556264823750668}
   m_Layer: 9
   m_Name: Cenoura
   m_TagString: Ingredient
@@ -59,8 +56,26 @@ GameObject:
   - component: {fileID: 4772854533123740}
   - component: {fileID: 198173293722251412}
   - component: {fileID: 199026593979175068}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Stars
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1798376728847386
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4928928798789786}
+  - component: {fileID: 33319604322105776}
+  - component: {fileID: 23438832077516326}
+  - component: {fileID: 64838591060193114}
+  m_Layer: 9
+  m_Name: Carrot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +91,7 @@ GameObject:
   - component: {fileID: 4738118149092308}
   - component: {fileID: 198030233465342448}
   - component: {fileID: 199496236237300802}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ReadySmoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,15 +104,16 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1212272069179732}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.207, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 4928928798789786}
   - {fileID: 4738118149092308}
   - {fileID: 4660839685990958}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4660839685990958
 Transform:
   m_ObjectHideFlags: 1
@@ -109,7 +125,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4104645449330932}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4738118149092308
 Transform:
@@ -123,7 +139,7 @@ Transform:
   m_Children:
   - {fileID: 4772854533123740}
   m_Father: {fileID: 4104645449330932}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4772854533123740
 Transform:
@@ -138,12 +154,25 @@ Transform:
   m_Father: {fileID: 4738118149092308}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!23 &23615365920046810
+--- !u!4 &4928928798789786
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1798376728847386}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4104645449330932}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &23438832077516326
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1212272069179732}
+  m_GameObject: {fileID: 1798376728847386}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -173,12 +202,12 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33806716767955054
+--- !u!33 &33319604322105776
 MeshFilter:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1212272069179732}
+  m_GameObject: {fileID: 1798376728847386}
   m_Mesh: {fileID: 4300000, guid: 2f4e24556233fca46a7971f6506f8adb, type: 3}
 --- !u!54 &54557028878416232
 Rigidbody:
@@ -195,12 +224,12 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &64556264823750668
+--- !u!64 &64838591060193114
 MeshCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1212272069179732}
+  m_GameObject: {fileID: 1798376728847386}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
@@ -246,6 +275,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 542ac3dcd791e49ad92b5ed48dc65eed, type: 3}
   timeToBurn: 15
   minMaxCooking: {x: 0.3, y: 0.8}
+  model: {fileID: 1798376728847386}
   readyEffect: {fileID: 1916600437083556}
   burnSmoke: {fileID: 1177890751740486}
   currentStage: 0

@@ -115,7 +115,7 @@ GameObject:
   m_Layer: 0
   m_Name: CloseGrabPivot
   m_TagString: Untagged
-  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -165,7 +165,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1480160776978670
 GameObject:
   m_ObjectHideFlags: 1
@@ -331,7 +331,7 @@ GameObject:
   m_Layer: 0
   m_Name: NormalGrabPivot
   m_TagString: Untagged
-  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -804,9 +804,9 @@ MonoBehaviour:
   handPivot: {fileID: 4957735683442558}
   normalGrabPivot: {fileID: 4610850532604448}
   closeHandGrabPivot: {fileID: 4949471439573282}
-  collisionMask:
+  grabMask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 4608
   grabCurveDown:
     serializedVersion: 2
     m_Curve:
@@ -962,7 +962,6 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   stickGrabDuration: 0.5
-  grill: {fileID: 0}
   grabObject: {fileID: 0}
 --- !u!114 &114217719009414810
 MonoBehaviour:
@@ -977,7 +976,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whatToHit:
     serializedVersion: 2
-    m_Bits: 1843
+    m_Bits: 5939
   smoothness: 0.5
   showCursor: 1
   hand: {fileID: 4863961597342118}
@@ -986,7 +985,9 @@ MonoBehaviour:
   opacityWhenTransparent: 0.5
   rendToMakeTransparent:
   - {fileID: 137584697607970434}
+  target: {fileID: 1200239557733120}
   acting: 0
+  hitObject: {fileID: 0}
 --- !u!114 &114706221134741708
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -7,6 +7,7 @@ public class LerpPosition : MonoBehaviour {
 	public float transtionDuration = .2f;
 	public AnimationCurve curve;
 	public Transform startPos;
+	public Transform[] positions;
 	public UnityEvent startedTransitionEvent = new UnityEvent();
 	public UnityEvent finishedTransitionEvent = new UnityEvent();
 
@@ -18,6 +19,11 @@ public class LerpPosition : MonoBehaviour {
 
 	public void SetCameraPos(Transform newPos) {
 		target = newPos;
+		StartCoroutine(MoveToPosition());
+	}
+
+	public void SetCameraPos(int newPosID) {
+		target = positions[newPosID];
 		StartCoroutine(MoveToPosition());
 	}
 
