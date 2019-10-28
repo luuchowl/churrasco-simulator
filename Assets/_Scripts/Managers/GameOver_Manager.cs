@@ -44,8 +44,9 @@ public class GameOver_Manager : MonoBehaviour {
 
 		topPlayers.text = string.Empty;
 		for (int i = 0; i < ranks.Length; i++) {
+			string[] words = ranks[i].Split(',');
+			topPlayers.text += string.Format("{0}. {1}\n", words[0], words[1]);
 			yield return new WaitForSeconds(0.5f);
-			topPlayers.text += ranks[i] + "\n";
 		}
 	}
 

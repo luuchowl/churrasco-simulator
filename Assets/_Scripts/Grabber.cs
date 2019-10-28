@@ -36,12 +36,12 @@ public class Grabber : MonoBehaviour {
 	// Use this for initialization
 	private void Awake() {
 		rb = GetComponent<Rigidbody>();
-		grill = Game_Manager.Instance.levelController.grill;
 	}
 
 	void Start () {
-		controller = FindObjectOfType<Player_Controller>();
-        cameraMain = Camera.main;
+		grill = Game_Manager.Instance.levelController.grill;
+		controller = Game_Manager.Instance.levelController.player;
+        cameraMain = Game_Manager.Instance.levelController.mainCamera;
 		initPos = handPivot.localPosition;
 		initRot = handPivot.localRotation;
 	}

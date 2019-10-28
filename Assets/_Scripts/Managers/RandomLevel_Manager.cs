@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class RandomLevel_Manager : MonoBehaviour {
 	public Props_Database database;
@@ -9,11 +10,7 @@ public class RandomLevel_Manager : MonoBehaviour {
 	public Transform[] bbq;
 	public Transform[] table;
 
-	private void Start() {
-		Generate();
-	}
-
-	public void Generate() {
+	public void Randomize() {
 		for (int i = 0; i < ground.Length; i++) {
 			Transform t = Instantiate(database.ground[Random.Range(0, database.ground.Length)]);
 			ReplaceObject(ground[i], t);

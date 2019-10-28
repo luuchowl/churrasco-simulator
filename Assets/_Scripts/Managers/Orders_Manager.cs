@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEngine.SceneManagement;
 using UnityEngine.Events;
 
 public class Orders_Manager : MonoBehaviour {
@@ -13,8 +12,7 @@ public class Orders_Manager : MonoBehaviour {
 	public ObjectPool ingredientPool;
 	public Ingredients_Database ingredientsDatabase;
 	public TextMeshProUGUI pointsText;
-	public Image fadeImg;
-	public float fadeDuration = 2;
+	
 	public GameObject[] wrongSymbols;
 	[BoxTitle("Properties")]
 	public int maxOrders = 5;
@@ -43,7 +41,6 @@ public class Orders_Manager : MonoBehaviour {
 		pointsText.text = "" + Game_Manager.Instance.GetPoints();
 		pointsAnim = pointsText.GetComponent<Animator>();
 		
-		fadeImg.color = Color.clear;
 		pointsText.gameObject.SetActive(false);
 
 		for (int i = 0; i < wrongSymbols.Length; i++) {
@@ -59,7 +56,7 @@ public class Orders_Manager : MonoBehaviour {
 		StartCoroutine("RandomCanSound_Routine");
 		pointsText.gameObject.SetActive(true);
 
-		player = FindObjectOfType<Player_Controller>();
+		player = Game_Manager.Instance.levelController.player;
 	}
 
 	private IEnumerator Order_Routine() {
@@ -156,7 +153,7 @@ public class Orders_Manager : MonoBehaviour {
 		
 		if(wrongs >= mistakesPermitted) {
 			player.acting = true;
-			StartCoroutine("GameOver_Routine");
+			Game_Manager.Instance.levelController.GameOver();
 		}
 
 		for (int i = 0; i < wrongs; i++) {
@@ -164,19 +161,7 @@ public class Orders_Manager : MonoBehaviour {
 		}
 	}
 
-	private IEnumerator GameOver_Routine() {
-		float timePassed = 0;
-		
-		while(timePassed < fadeDuration) {
-			timePassed += Time.deltaTime;
-
-			fadeImg.color = Color.Lerp(Color.clear, Color.black, timePassed / fadeDuration);
-
-			yield return null;
-		}
-
-		SceneManager.LoadScene(1);
-	}
+	
 
 	private IEnumerator RandomCanSound_Routine() {
 		while (true) {
