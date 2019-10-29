@@ -25,7 +25,7 @@ public class Game_Manager : Singleton<Game_Manager> {
 	}
 
 	private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
-		
+
 	}
 
 	private void OnSceneUnloaded(Scene scene) {

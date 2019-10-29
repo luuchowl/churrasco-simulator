@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_Scenes/Final/Final.unity
-    guid: c780aa41a5c1ec64b883a0650acb4eed
+    path: Assets/_Scenes/Final Post Jam/NewLevel.unity
+    guid: 4ccf58b8c981ca14790250d018b1f4da
   - enabled: 1
-    path: Assets/_Scenes/Final/GameOver.unity
+    path: Assets/_Scenes/GameOver/GameOver.unity
     guid: 2e7c22a23f1c8b24784f766ef448b0d2
   m_configObjects: {}
