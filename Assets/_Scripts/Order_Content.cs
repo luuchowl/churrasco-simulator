@@ -12,8 +12,9 @@ public class Order_Content : MonoBehaviour {
 	public RectTransform ingredientsHolder;
 	public Order order;
     public Image timer;
+    public Image postIt;
 
-    public float currentTime = 5;
+	public float currentTime = 5;
 	
 	private void OnEnable() {
 		Invoke("Disable", timeToDisappear);//TODO remove later

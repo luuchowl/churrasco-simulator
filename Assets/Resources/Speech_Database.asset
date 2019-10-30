@@ -40,9 +40,6 @@ MonoBehaviour:
     - texto: "\xD4 filh\xE3o, joga uma cerva a\xED!"
       emoji: {fileID: 0}
   - falas:
-    - texto: "Churrasco no BIG Festival? Onde j\xE1 se viu?"
-      emoji: {fileID: 0}
-  - falas:
     - texto: Tio, tem carninha?
       emoji: {fileID: 0}
   - falas:

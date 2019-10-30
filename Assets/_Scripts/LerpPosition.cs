@@ -14,15 +14,15 @@ public class LerpPosition : MonoBehaviour {
 	private Transform target;
 
 	private void Start() {
-		SetCameraPos(startPos);
+		SetPos(startPos);
 	}
 
-	public void SetCameraPos(Transform newPos) {
+	public void SetPos(Transform newPos) {
 		target = newPos;
 		StartCoroutine(MoveToPosition());
 	}
 
-	public void SetCameraPos(int newPosID) {
+	public void SetPos(int newPosID) {
 		target = positions[newPosID];
 		StartCoroutine(MoveToPosition());
 	}

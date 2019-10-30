@@ -5,16 +5,24 @@ using TMPro;
 using UnityEngine.UI;
 
 public class SpeechBubble_Content : MonoBehaviour {
-	public float timeToDisappear = 5;
 	public TextMeshProUGUI text;
 	public Image image;
+	public Animator anim;
+	[HideInInspector] public ObjectPool ownerPool;
 
-	private void OnEnable() {
-		Invoke("Disable", timeToDisappear);
+	public void Play(float duration) {
+		StartCoroutine(PlayAndReturnToPool_Routine(duration));
 	}
 
-	public void Disable() {
-		CancelInvoke();
-		gameObject.SetActive(false);
+	private IEnumerator PlayAndReturnToPool_Routine(float duration) {
+		anim.Play("FadeIn");
+		yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
+
+		yield return new WaitForSeconds(duration);
+
+		anim.Play("FadeOut");
+		yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
+
+		ownerPool.ReturnObjectToPool(this.gameObject);
 	}
 }

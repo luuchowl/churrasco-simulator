@@ -1,27 +1,38 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Video;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 using UnityEngine.Events;
 
 public class MainMenu_Controller : MonoBehaviour {
+	public LerpPosition camPos;
+	public AudioMixer mixer;
+	public GameObject backButton;
 	[BoxTitle("Title Screen")]
+	public Transform titleViewPosition;
 	public GameObject showMenuButton;
 	public GameObject pressStart;
 	[BoxTitle("Menu Screen")]
+	public Transform menuViewPosition;
 	public GameObject menuPanel;
 	public Slider soundSlider;
 	public Slider musicSlider;
 	public Slider sfxSlider;
-	public AudioMixer mixer;
+	[BoxTitle("Tutorial")]
+	public Transform tutorialViewPosition;
+	public VideoPlayer player;
+	public LerpPosition tutorialPhone;
+	public Transform showPhonePosition;
+	public Transform restPhonePosition;
+	[BoxTitle("Credits")]
+	public Transform creditsViewPosition;
 	[BoxTitle("Game Start")]
+	public Transform gameViewPosition;
 	public UnityEvent gameStarted = new UnityEvent();
 
-	private LerpPosition camPos;
-
 	private void Start() {
-		camPos = Game_Manager.Instance.levelController.mainCamera.GetComponent<LerpPosition>();
 		ShowTitleScreen();
 
 		menuPanel.gameObject.SetActive(false);
@@ -42,19 +53,23 @@ public class MainMenu_Controller : MonoBehaviour {
 	}
 
 	public void ShowTitleScreen() {
-		camPos.SetCameraPos(0);
+		camPos.SetPos(titleViewPosition);
 
 		pressStart.SetActive(true);
 		showMenuButton.SetActive(true);
 		menuPanel.gameObject.SetActive(false);
+		backButton.SetActive(false);
 	}
 
 	public void ShowMenu() {
-		camPos.SetCameraPos(1);
+		camPos.SetPos(menuViewPosition);
+		tutorialPhone.SetPos(restPhonePosition);
 
 		pressStart.SetActive(false);
 		showMenuButton.SetActive(false);
 		menuPanel.gameObject.SetActive(true);
+		backButton.SetActive(false);
+		player.Stop();
 	}
 
 	public void StartGame() {
@@ -65,14 +80,23 @@ public class MainMenu_Controller : MonoBehaviour {
 		gameStarted.Invoke();
 
 		menuPanel.gameObject.SetActive(false);
+		camPos.SetPos(gameViewPosition);
 	}
 
 	public void ShowCredits() {
+		camPos.SetPos(creditsViewPosition);
+
 		menuPanel.gameObject.SetActive(false);
+		backButton.SetActive(true);
 	}
 
 	public void ShowTutorial() {
+		camPos.SetPos(tutorialViewPosition);
+
+		backButton.SetActive(true);
 		menuPanel.gameObject.SetActive(false);
+		tutorialPhone.SetPos(showPhonePosition);
+		player.Play();
 	}
 
 	public void Mute(bool muteSound) {

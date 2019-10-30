@@ -21,6 +21,7 @@ public class Orders_Manager : MonoBehaviour {
 	public float randomizeDelay = 1;
 	public Vector2Int minMaxNumberOfIngredients = new Vector2Int(1, 3);
 	public int mistakesPermitted = 3;
+	public Color[] postItColors;
 	[BoxTitle("Misc")]
 	public List<Order_Content> currentOrders = new List<Order_Content>();
 	public UnityEvent startGame = new UnityEvent();
@@ -28,6 +29,7 @@ public class Orders_Manager : MonoBehaviour {
 	private Animator pointsAnim;
 	private int wrongs;
 	private Player_Controller player;
+	private int lastColorID;
 
 	private void OnEnable() {
 		Game_Manager.Instance.addPointsAction += AddPoints;
@@ -73,6 +75,14 @@ public class Orders_Manager : MonoBehaviour {
 
 	public void MakeOrder() {
 		Order_Content order = orderPool.GetPooledObject<Order_Content>(orderParent);
+
+		int colorId = 0;
+
+		do {
+			colorId = Random.Range(0, postItColors.Length);
+		} while (colorId == lastColorID);
+
+		order.postIt.color = postItColors[colorId];
 
 		int childCount = order.ingredientsHolder.childCount;
 		for (int i = 0; i < childCount; i++) {
@@ -121,6 +131,12 @@ public class Orders_Manager : MonoBehaviour {
 			int points = 0;
 
 			//Check if the lenght of the ingredients are the same
+			Debug.Log(order == null);
+			Debug.Log(order.ingredients == null);
+			Debug.Log(currentOrders == null);
+			Debug.Log(currentOrders[i] == null);
+			Debug.Log(currentOrders[i].order == null);
+			Debug.Log(currentOrders[i].order.ingredients == null);
 			if (order.ingredients.Count != currentOrders[i].order.ingredients.Count) {
 				continue;
 			}

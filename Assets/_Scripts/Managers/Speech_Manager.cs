@@ -12,11 +12,15 @@ public class Speech_Manager : MonoBehaviour{
 	public float startDelay = 1;
 	public float orderDelay = 1;
 	public float randomizeDelay = 1;
+	public float onScreenDelay = 1;
 
 	private bool currentlySpeaking;
 	private int lastSpeech;
+	private ContentSizeFitter fitter;
 
 	public void StartSpeeches() {
+		fitter = speechParent.GetComponent<ContentSizeFitter>();
+
 		StartCoroutine("ShowSpeech_Routine");
 	}
 
@@ -44,14 +48,6 @@ public class Speech_Manager : MonoBehaviour{
 		for (int i = 0; i < c.falas.Length; i++) {
 			CreateSpeech(c.falas[i].texto, c.falas[i].emoji);
 
-			yield return null;
-
-			LayoutRebuilder.MarkLayoutForRebuild(speechParent);
-
-			yield return null;
-
-			LayoutRebuilder.MarkLayoutForRebuild(speechParent);
-
 			yield return new WaitForSeconds(speechDatabase.delayOnSequentialMessages);
 		}
 
@@ -60,6 +56,7 @@ public class Speech_Manager : MonoBehaviour{
 
 	public void CreateSpeech(string text, Sprite emoji) {
 		SpeechBubble_Content bubble = speechPool.GetPooledObject<SpeechBubble_Content>(speechParent);
+		bubble.ownerPool = speechPool;
 
 		bubble.text.gameObject.SetActive(text != "");
 		bubble.image.gameObject.SetActive(emoji != null);
@@ -68,5 +65,15 @@ public class Speech_Manager : MonoBehaviour{
 		bubble.image.sprite = emoji;
 
 		bubble.transform.SetAsLastSibling();
+
+		StartCoroutine(WaitAndHideMessage_Routine(bubble));
+	}
+
+	private IEnumerator WaitAndHideMessage_Routine(SpeechBubble_Content bubble) {
+		fitter.enabled = false;
+		yield return null;
+		fitter.enabled = true;
+
+		bubble.Play(onScreenDelay);
 	}
 }

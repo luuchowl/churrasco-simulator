@@ -198,6 +198,7 @@ MonoBehaviour:
   order:
     ingredients: []
   timer: {fileID: 114113906862381600}
+  postIt: {fileID: 114926141922456658}
   currentTime: 5
 --- !u!114 &114626837291849972
 MonoBehaviour:
@@ -235,8 +236,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: ea85fe19a444a8d44875f72e4c090d29, type: 3}
-  m_Type: 3
+  m_Sprite: {fileID: 21300000, guid: 2020c79afa12bad4aa4d964fdb2d650d, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
