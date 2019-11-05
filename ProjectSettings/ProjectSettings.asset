@@ -256,52 +256,15 @@ PlayerSettings:
     height: 180
     banner: {fileID: 0}
   androidGamepadSupportLevel: 0
-  resolutionDialogBanner: {fileID: 2800000, guid: 89b969d9ec51843adbf3e27bc1aa1c71,
+  resolutionDialogBanner: {fileID: 2800000, guid: 1d462e476eaea47878de2b0cda94658e,
     type: 3}
   m_BuildTargetIcons:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: b529c0c4fb8c446fd95c4f496c12c8a3, type: 3}
+      m_Icon: {fileID: 2800000, guid: 7cd51ffd3d3114a1b89c51853d2b444f, type: 3}
       m_Width: 128
       m_Height: 128
-      m_Kind: 0
-  - m_BuildTarget: Standalone
-    m_Icons:
-    - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: b529c0c4fb8c446fd95c4f496c12c8a3, type: 3}
-      m_Width: 1024
-      m_Height: 1024
-      m_Kind: 0
-    - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: b529c0c4fb8c446fd95c4f496c12c8a3, type: 3}
-      m_Width: 512
-      m_Height: 512
-      m_Kind: 0
-    - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: b529c0c4fb8c446fd95c4f496c12c8a3, type: 3}
-      m_Width: 256
-      m_Height: 256
-      m_Kind: 0
-    - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: b529c0c4fb8c446fd95c4f496c12c8a3, type: 3}
-      m_Width: 128
-      m_Height: 128
-      m_Kind: 0
-    - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: b529c0c4fb8c446fd95c4f496c12c8a3, type: 3}
-      m_Width: 48
-      m_Height: 48
-      m_Kind: 0
-    - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: b529c0c4fb8c446fd95c4f496c12c8a3, type: 3}
-      m_Width: 32
-      m_Height: 32
-      m_Kind: 0
-    - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: b529c0c4fb8c446fd95c4f496c12c8a3, type: 3}
-      m_Width: 16
-      m_Height: 16
       m_Kind: 0
   m_BuildTargetPlatformIcons: []
   m_BuildTargetBatching:
