@@ -101,7 +101,6 @@ public class Doggy_Controller : MonoBehaviour {
 		{
 			if (collision.rigidbody != null && snacksList.Contains(collision.rigidbody.transform))
 			{
-				Debug.Log(2);
 				snacksList.Remove(collision.rigidbody.transform);
 			}
 

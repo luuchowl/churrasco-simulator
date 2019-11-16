@@ -13,7 +13,6 @@ public class Doggy_Detector : MonoBehaviour {
 			Transform t = rb.transform;
 			if (!doggy.snacksList.Contains(t))
 			{
-				Debug.Log(t.name, t);
 				doggy.snacksList.Add(t);
 			}
 		}

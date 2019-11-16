@@ -131,12 +131,12 @@ public class Orders_Manager : MonoBehaviour {
 			int points = 0;
 
 			//Check if the lenght of the ingredients are the same
-			Debug.Log(order == null);
-			Debug.Log(order.ingredients == null);
-			Debug.Log(currentOrders == null);
-			Debug.Log(currentOrders[i] == null);
-			Debug.Log(currentOrders[i].order == null);
-			Debug.Log(currentOrders[i].order.ingredients == null);
+			//Debug.Log(order == null);
+			//Debug.Log(order.ingredients == null);
+			//Debug.Log(currentOrders == null);
+			//Debug.Log(currentOrders[i] == null);
+			//Debug.Log(currentOrders[i].order == null);
+			//Debug.Log(currentOrders[i].order.ingredients == null);
 			if (order.ingredients.Count != currentOrders[i].order.ingredients.Count) {
 				continue;
 			}
