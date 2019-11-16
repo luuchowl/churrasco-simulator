@@ -3,12 +3,12 @@
 	Properties
 	{
 		
-		[PerRendererData] _Factor("Factor", Range(0, 3)) = 0
+		 _Factor("Factor", Range(0, 3)) = 0
 
         _MainTex0 ("Texture0", 2D) = "white" {}
         _Color0 ("Color 0", Color) = (1, 1, 1, 1)
         _MainTex1 ("Texture1", 2D) = "white" {}
-        _Color1 ("Color 1", Color) = (1, 1, 1, 1)
+		[HDR]_Color1 ("Color 1", Color) = (1, 1, 1, 1)
         _MainTex2 ("Texture2", 2D) = "white" {}
         _Color2 ("Color 2", Color) = (1, 1, 1, 1)
         _MainTex3 ("Texture3", 2D) = "white" {}
