@@ -36,6 +36,7 @@ GameObject:
   - component: {fileID: 4879224898716722}
   - component: {fileID: 33143618113646590}
   - component: {fileID: 23397536135572966}
+  - component: {fileID: 65203261439969366}
   m_Layer: 0
   m_Name: Muro
   m_TagString: Untagged
@@ -53,6 +54,7 @@ GameObject:
   - component: {fileID: 4197512235505368}
   - component: {fileID: 33582321974071800}
   - component: {fileID: 23708411469035072}
+  - component: {fileID: 65461959704427566}
   m_Layer: 0
   m_Name: Muro
   m_TagString: Untagged
@@ -70,6 +72,7 @@ GameObject:
   - component: {fileID: 4420711297451596}
   - component: {fileID: 33427948139231018}
   - component: {fileID: 23866454562658340}
+  - component: {fileID: 65745324781609856}
   m_Layer: 0
   m_Name: Muro
   m_TagString: Untagged
@@ -258,3 +261,39 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1711615187417252}
   m_Mesh: {fileID: 4300000, guid: edc41647dbabb5b45bd5fd53e04d8ee8, type: 3}
+--- !u!65 &65203261439969366
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1472023180731100}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.052289292, y: 0.011087522, z: 0.031010773}
+  m_Center: {x: -0.0010848528, y: -0.0000000013969839, z: 0.015698094}
+--- !u!65 &65461959704427566
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1711615187417252}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0522893, y: 0.01108753, z: 0.031010786}
+  m_Center: {x: -0.0010848523, y: 2.2070412e-10, z: 0.015698096}
+--- !u!65 &65745324781609856
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1893720909313964}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.052289296, y: 0.011087525, z: 0.03101078}
+  m_Center: {x: -0.0010848511, y: -0.0000000051222724, z: 0.015698098}
