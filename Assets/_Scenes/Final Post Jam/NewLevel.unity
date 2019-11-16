@@ -42720,7 +42720,17 @@ Prefab:
     - target: {fileID: 114968847978293306, guid: 0140bfa39bf32524c8508af732a7d5ca,
         type: 2}
       propertyPath: jumpForce
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114968847978293306, guid: 0140bfa39bf32524c8508af732a7d5ca,
+        type: 2}
+      propertyPath: minMaxJumpForce.x
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114968847978293306, guid: 0140bfa39bf32524c8508af732a7d5ca,
+        type: 2}
+      propertyPath: minMaxJumpForce.y
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0140bfa39bf32524c8508af732a7d5ca, type: 2}
