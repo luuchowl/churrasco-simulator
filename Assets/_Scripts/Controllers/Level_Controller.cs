@@ -27,6 +27,19 @@ public class Level_Controller : MonoBehaviour {
 		GetReferences();
 	}
 
+	private void Update()
+	{
+		if (Input.GetKeyDown(KeyCode.P))
+		{
+			Game_Manager.Instance.AddPoints(5);
+		}
+
+		if (Input.GetKeyDown(KeyCode.O))
+		{
+			 orders.AddWrong();
+		}
+	}
+
 	public void GetReferences() {
 		mainCamera = Camera.main;
 		player = FindObjectOfType<Player_Controller>();

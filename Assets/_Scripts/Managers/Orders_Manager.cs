@@ -19,6 +19,8 @@ public class Orders_Manager : MonoBehaviour {
 	public float startDelay = 1;
 	public float orderDelay = 1;
 	public float randomizeDelay = 1;
+	public float difficultyStep = 1;
+	public float difficultyStepTime = 1;
 	public Vector2Int minMaxNumberOfIngredients = new Vector2Int(1, 3);
 	public int mistakesPermitted = 3;
 	public Color[] postItColors;
@@ -63,13 +65,22 @@ public class Orders_Manager : MonoBehaviour {
 
 	private IEnumerator Order_Routine() {
 		yield return new WaitForSeconds(startDelay);
+		int stepCounter = 0;
+		float lastStep = Time.time;
+
 
 		while (true) {
 			if (currentOrders.Count < maxOrders) {
 				MakeOrder();
 			}
 
-			yield return new WaitForSeconds(orderDelay + Random.Range(0, randomizeDelay));
+			if(lastStep - Time.time > difficultyStepTime)
+			{
+				lastStep = Time.time;
+				stepCounter++;
+			}
+
+			yield return new WaitForSeconds(orderDelay + Random.Range(0, randomizeDelay) - (difficultyStep * stepCounter));
 		}
 	}
 
