@@ -9,6 +9,7 @@ public class Doggy_Controller : MonoBehaviour {
 	public Vector2 minMaxJumpForce;
 	public float flipForce = 1;
 	public float walkForce = 1;
+	[Range(0, 1)] public float rotationSpeed = .5f;
 	public AudioClip[] dogBarks;
 	public List<Transform> snacksList = new List<Transform>();
 	[Header("Debug")]
@@ -18,7 +19,7 @@ public class Doggy_Controller : MonoBehaviour {
 	private Rigidbody rb;
 	private bool stayUpright;
 	private ObjectPool[] pools;
-	private Vector3 randomWalkDir;
+	private Vector3 walkDir;
 	
 	// Use this for initialization
 	void Start () {
@@ -51,7 +52,9 @@ public class Doggy_Controller : MonoBehaviour {
 		{
 			var rot = Quaternion.FromToRotation(transform.up, Vector3.up);
 			rb.AddTorque(new Vector3(rot.x, rot.y, rot.z) * uprightForce);
-			rb.AddForce(randomWalkDir * walkForce);
+			rb.AddForce(walkDir * walkForce);
+
+			doggyTransform.forward = Vector3.Lerp(doggyTransform.forward, walkDir, rotationSpeed);
 		}
 	}
 
@@ -113,8 +116,7 @@ public class Doggy_Controller : MonoBehaviour {
 
 	private void ChooseRandomWalkDir()
 	{
-		randomWalkDir = Random.insideUnitSphere;
-		randomWalkDir.y = 0;
-		doggyTransform.forward = randomWalkDir;
+		walkDir = Random.insideUnitSphere;
+		walkDir.y = 0;
 	}
 }

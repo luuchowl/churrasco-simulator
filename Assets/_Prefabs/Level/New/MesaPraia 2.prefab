@@ -21,7 +21,8 @@ GameObject:
   - component: {fileID: 4625305808364946}
   - component: {fileID: 33162782547770798}
   - component: {fileID: 23251952195529526}
-  m_Layer: 0
+  - component: {fileID: 65710122226264832}
+  m_Layer: 14
   m_Name: MesaPraia 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1761225276291132}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 1.064, y: -0.047, z: 3.197}
+  m_LocalPosition: {x: -0.7992265, y: 0.58938503, z: 2.9862614}
   m_LocalScale: {x: 100, y: 99.99997, z: 99.99997}
   m_Children: []
   m_Father: {fileID: 0}
@@ -83,3 +84,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1761225276291132}
   m_Mesh: {fileID: 4300000, guid: ddaec092b795f104f8ba0a11533c79ac, type: 3}
+--- !u!65 &65710122226264832
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1761225276291132}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0088744, y: 0.008874399, z: 0.0007492504}
+  m_Center: {x: 0.00000012099743, y: 0.0000000014901166, z: 0.0059892205}

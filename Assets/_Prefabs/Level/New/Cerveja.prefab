@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4285088702175734}
   - component: {fileID: 33454535112026042}
   - component: {fileID: 64868422698769492}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65,7 +65,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1417203263966934}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 1.078, y: 0.614, z: 3.648}
+  m_LocalPosition: {x: -0.10891182, y: 0.7107697, z: 3.251361}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4285088702175734}
