@@ -23,8 +23,8 @@ public class StealChurras : MonoBehaviour {
 	private Stick_Content stick;
 
 	private void OnEnable() {
-		grill = Game_Manager.Instance.levelController.grill;
-		player = Game_Manager.Instance.levelController.player.GetComponentInChildren<Grabber>();
+		grill = Game_Manager.Instance.ganeplayManager.grill;
+		player = Game_Manager.Instance.ganeplayManager.player.GetComponentInChildren<Grabber>();
 
 		initPos = transform.position;
 

@@ -39,9 +39,9 @@ public class Grabber : MonoBehaviour {
 	}
 
 	void Start () {
-		grill = Game_Manager.Instance.levelController.grill;
-		controller = Game_Manager.Instance.levelController.player;
-        cameraMain = Game_Manager.Instance.levelController.mainCamera;
+		grill = Game_Manager.Instance.ganeplayManager.grill;
+		controller = Game_Manager.Instance.ganeplayManager.player;
+        cameraMain = Game_Manager.Instance.ganeplayManager.mainCamera;
 		initPos = handPivot.localPosition;
 		initRot = handPivot.localRotation;
 	}

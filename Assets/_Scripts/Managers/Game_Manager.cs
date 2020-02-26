@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using System;
 
 public class Game_Manager : Singleton<Game_Manager> {
-	public Level_Controller levelController;
+	public Gameplay_Manager ganeplayManager;
 
 	public event Action<int> addPointsAction;
 
@@ -25,12 +25,12 @@ public class Game_Manager : Singleton<Game_Manager> {
 	}
 
 	private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
-
+		LoadingScreen_Controller.Instance.FadeOut();
 	}
 
 	private void OnSceneUnloaded(Scene scene) {
 		Sound_Manager.Instance.StopAll();
-		levelController = null;
+		ganeplayManager = null;
 	}
 
 	public void AddPoints(int amount) {

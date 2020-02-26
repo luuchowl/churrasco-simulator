@@ -17,9 +17,12 @@ public class MainMenu_Controller : MonoBehaviour {
 	[BoxTitle("Menu Screen")]
 	public Transform menuViewPosition;
 	public GameObject menuPanel;
+	[BoxTitle("MenuOptions")]
 	public Slider soundSlider;
 	public Slider musicSlider;
 	public Slider sfxSlider;
+	public Transform gameModesPosition;
+	public GameObject gameModesPanel;
 	[BoxTitle("Tutorial")]
 	public Transform tutorialViewPosition;
 	public VideoPlayer videoPlayer;
@@ -33,6 +36,7 @@ public class MainMenu_Controller : MonoBehaviour {
 		ShowTitleScreen();
 
 		menuPanel.gameObject.SetActive(false);
+		gameModesPanel.gameObject.SetActive(false);
 
 		Sound_Manager.Instance.SetMusic(Sound_Manager.Instance.audioHolder.music.simple[0]);
 		Sound_Manager.Instance.PlaySingle(Sound_Manager.Instance.audioHolder.ambient.simple[0], true);
@@ -47,20 +51,6 @@ public class MainMenu_Controller : MonoBehaviour {
 
 		mixer.GetFloat("SFXVolume", out value);
 		sfxSlider.value = Mathf.InverseLerp(-80, 20, value);
-	}
-
-	public void StartGame()
-	{
-		//Game_Manager.Instance.levelController.orders.Iniciar();
-		//Game_Manager.Instance.levelController.speeches.StartSpeeches();
-		//Sound_Manager.Instance.PlayRandomSFX(true, Sound_Manager.Instance.audioHolder.burningCoal.simple);
-
-
-		LoadingScreen_Controller.Instance.FadeIn();
-		LoadingScreen_Controller.Instance.fadeInEnded.AddListener(() =>
-		{
-
-		});
 	}
 
 	public void ShowTitleScreen() {
@@ -79,8 +69,20 @@ public class MainMenu_Controller : MonoBehaviour {
 		pressStart.SetActive(false);
 		showMenuButton.SetActive(false);
 		menuPanel.gameObject.SetActive(true);
+		gameModesPanel.gameObject.SetActive(false);
+
 		backButton.SetActive(false);
 		videoPlayer.Stop();
+	}
+
+	public void ShowGameModes()
+	{
+		camPos.SetPos(gameModesPosition);
+
+		gameModesPanel.gameObject.SetActive(true);
+		menuPanel.gameObject.SetActive(false);
+
+		backButton.SetActive(true);
 	}
 
 	public void ShowCredits() {
@@ -117,5 +119,19 @@ public class MainMenu_Controller : MonoBehaviour {
 
 	public void SetSFXVolume(float volume) {
 		Sound_Manager.Instance.SetSfxVolume(volume);
+	}
+
+	public void StartQuickPlay()
+	{
+		//Game_Manager.Instance.levelController.orders.Iniciar();
+		//Game_Manager.Instance.levelController.speeches.StartSpeeches();
+		//Sound_Manager.Instance.PlayRandomSFX(true, Sound_Manager.Instance.audioHolder.burningCoal.simple);
+
+
+		LoadingScreen_Controller.Instance.FadeIn();
+		LoadingScreen_Controller.Instance.fadeInEnded.AddListener(() =>
+		{
+			SceneManager.LoadScene("Quick Play");
+		});
 	}
 }

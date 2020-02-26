@@ -26,6 +26,7 @@ public class LoadingScreen_Controller : Singleton<LoadingScreen_Controller> {
 
 	public void FadeOut()
 	{
+		fadeOutEnded.AddListener(() => { fadeImage.gameObject.SetActive(false); });
 		StartCoroutine(Fade_Routine(1, 0, fadeOutEnded));
 	}
 
@@ -44,11 +45,10 @@ public class LoadingScreen_Controller : Singleton<LoadingScreen_Controller> {
 			yield return null;
 		}
 
-		imgColor.a = startAlpha;
+		imgColor.a = endAlpha;
 		fadeImage.color = imgColor;
 
 		finishedEvent.Invoke();
 		finishedEvent.RemoveAllListeners();
-		fadeImage.gameObject.SetActive(false);
 	}
 }

@@ -1,0 +1,285 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1296459080796676
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4218254098408026}
+  m_Layer: 0
+  m_Name: Walls
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4218254098408026
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1296459080796676}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4197512235505368}
+  - {fileID: 24748040893126949}
+  - {fileID: 7332889960134993595}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &2018225710857979970
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4218254098408026}
+    m_Modifications:
+    - target: {fileID: 2041750903418147175, guid: 892a07b74df77e2448359b2277d4c29c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 2041750903418147175, guid: 892a07b74df77e2448359b2277d4c29c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2041750903418147175, guid: 892a07b74df77e2448359b2277d4c29c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.347
+      objectReference: {fileID: 0}
+    - target: {fileID: 2041750903418147175, guid: 892a07b74df77e2448359b2277d4c29c,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071069
+      objectReference: {fileID: 0}
+    - target: {fileID: 2041750903418147175, guid: 892a07b74df77e2448359b2277d4c29c,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.0000010356307
+      objectReference: {fileID: 0}
+    - target: {fileID: 2041750903418147175, guid: 892a07b74df77e2448359b2277d4c29c,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.0000010629993
+      objectReference: {fileID: 0}
+    - target: {fileID: 2041750903418147175, guid: 892a07b74df77e2448359b2277d4c29c,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.70710677
+      objectReference: {fileID: 0}
+    - target: {fileID: 2041750903418147175, guid: 892a07b74df77e2448359b2277d4c29c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2041750903418147175, guid: 892a07b74df77e2448359b2277d4c29c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2041750903418147175, guid: 892a07b74df77e2448359b2277d4c29c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2041750903418147175, guid: 892a07b74df77e2448359b2277d4c29c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2041750903418147175, guid: 892a07b74df77e2448359b2277d4c29c,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 100.000145
+      objectReference: {fileID: 0}
+    - target: {fileID: 2041750903418147175, guid: 892a07b74df77e2448359b2277d4c29c,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 100.00016
+      objectReference: {fileID: 0}
+    - target: {fileID: 2043856360853110555, guid: 892a07b74df77e2448359b2277d4c29c,
+        type: 3}
+      propertyPath: m_Name
+      value: Muro Tijolos (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 892a07b74df77e2448359b2277d4c29c, type: 3}
+--- !u!4 &24748040893126949 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2041750903418147175, guid: 892a07b74df77e2448359b2277d4c29c,
+    type: 3}
+  m_PrefabInstance: {fileID: 2018225710857979970}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2043271096247945151
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4218254098408026}
+    m_Modifications:
+    - target: {fileID: 2041750903418147175, guid: 892a07b74df77e2448359b2277d4c29c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 2041750903418147175, guid: 892a07b74df77e2448359b2277d4c29c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2041750903418147175, guid: 892a07b74df77e2448359b2277d4c29c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 2041750903418147175, guid: 892a07b74df77e2448359b2277d4c29c,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.6903456
+      objectReference: {fileID: 0}
+    - target: {fileID: 2041750903418147175, guid: 892a07b74df77e2448359b2277d4c29c,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.153046
+      objectReference: {fileID: 0}
+    - target: {fileID: 2041750903418147175, guid: 892a07b74df77e2448359b2277d4c29c,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.15304598
+      objectReference: {fileID: 0}
+    - target: {fileID: 2041750903418147175, guid: 892a07b74df77e2448359b2277d4c29c,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.6903455
+      objectReference: {fileID: 0}
+    - target: {fileID: 2041750903418147175, guid: 892a07b74df77e2448359b2277d4c29c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2041750903418147175, guid: 892a07b74df77e2448359b2277d4c29c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2041750903418147175, guid: 892a07b74df77e2448359b2277d4c29c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2041750903418147175, guid: 892a07b74df77e2448359b2277d4c29c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -25.000002
+      objectReference: {fileID: 0}
+    - target: {fileID: 2043856360853110555, guid: 892a07b74df77e2448359b2277d4c29c,
+        type: 3}
+      propertyPath: m_Name
+      value: Muro Tijolos
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 892a07b74df77e2448359b2277d4c29c, type: 3}
+--- !u!4 &4197512235505368 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2041750903418147175, guid: 892a07b74df77e2448359b2277d4c29c,
+    type: 3}
+  m_PrefabInstance: {fileID: 2043271096247945151}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8761305781129557980
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4218254098408026}
+    m_Modifications:
+    - target: {fileID: 2041750903418147175, guid: 892a07b74df77e2448359b2277d4c29c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 2041750903418147175, guid: 892a07b74df77e2448359b2277d4c29c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2041750903418147175, guid: 892a07b74df77e2448359b2277d4c29c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2041750903418147175, guid: 892a07b74df77e2448359b2277d4c29c,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2041750903418147175, guid: 892a07b74df77e2448359b2277d4c29c,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2041750903418147175, guid: 892a07b74df77e2448359b2277d4c29c,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2041750903418147175, guid: 892a07b74df77e2448359b2277d4c29c,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2041750903418147175, guid: 892a07b74df77e2448359b2277d4c29c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2041750903418147175, guid: 892a07b74df77e2448359b2277d4c29c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2041750903418147175, guid: 892a07b74df77e2448359b2277d4c29c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2041750903418147175, guid: 892a07b74df77e2448359b2277d4c29c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2041750903418147175, guid: 892a07b74df77e2448359b2277d4c29c,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 100.000015
+      objectReference: {fileID: 0}
+    - target: {fileID: 2041750903418147175, guid: 892a07b74df77e2448359b2277d4c29c,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 100.000175
+      objectReference: {fileID: 0}
+    - target: {fileID: 2041750903418147175, guid: 892a07b74df77e2448359b2277d4c29c,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 100.0002
+      objectReference: {fileID: 0}
+    - target: {fileID: 2043856360853110555, guid: 892a07b74df77e2448359b2277d4c29c,
+        type: 3}
+      propertyPath: m_Name
+      value: Muro Tijolos (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 892a07b74df77e2448359b2277d4c29c, type: 3}
+--- !u!4 &7332889960134993595 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2041750903418147175, guid: 892a07b74df77e2448359b2277d4c29c,
+    type: 3}
+  m_PrefabInstance: {fileID: 8761305781129557980}
+  m_PrefabAsset: {fileID: 0}

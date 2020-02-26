@@ -6,9 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_Scenes/Final Post Jam/NewLevel.unity
+    path: Assets/_Scenes/Final/TitleScreen.unity
+    guid: f3264d0368011984bb3d0accb8a02522
+  - enabled: 1
+    path: Assets/_Scenes/Final/GameModes/Quick Play.unity
     guid: 4ccf58b8c981ca14790250d018b1f4da
   - enabled: 1
-    path: Assets/_Scenes/GameOver/GameOver.unity
+    path: Assets/_Scenes/Final/GameOver.unity
     guid: 2e7c22a23f1c8b24784f766ef448b0d2
   m_configObjects: {}

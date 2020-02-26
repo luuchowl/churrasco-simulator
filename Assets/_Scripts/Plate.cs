@@ -18,14 +18,14 @@ public class Plate : MonoBehaviour {
 			} else {
 				Debug.Log("Incorrect...");
 				Game_Manager.Instance.AddPoints(wrongPoints);
-				Game_Manager.Instance.levelController.orders.AddWrong();
+				Game_Manager.Instance.ganeplayManager.orders.AddWrong();
 			}
 
 			//Clear the ingredients
 			stick.ReturnFoodsToPool();
 
 			//Return the Stick
-			ObjectPool[] pools = Game_Manager.Instance.levelController.pools;
+			ObjectPool[] pools = Game_Manager.Instance.ganeplayManager.pools;
 			for (int i = 0; i < pools.Length; i++) {
 				if (pools[i].ReturnObjectToPool(other.gameObject)) {
 					break;
@@ -43,7 +43,7 @@ public class Plate : MonoBehaviour {
 
 			bool correct = false;
 
-			if (Game_Manager.Instance.levelController.orders.TakeOrder(o))
+			if (Game_Manager.Instance.ganeplayManager.orders.TakeOrder(o))
 			{
 				if (f.currentStage == Food.stage.WellDone)
 				{
@@ -57,11 +57,11 @@ public class Plate : MonoBehaviour {
 			{
 				Debug.Log("Incorrect...");
 				Game_Manager.Instance.AddPoints(wrongPoints);
-				Game_Manager.Instance.levelController.orders.AddWrong();
+				Game_Manager.Instance.ganeplayManager.orders.AddWrong();
 			}
 
 			//Return the Ingredient
-			ObjectPool[] pools = Game_Manager.Instance.levelController.pools;
+			ObjectPool[] pools = Game_Manager.Instance.ganeplayManager.pools;
 			for (int i = 0; i < pools.Length; i++)
 			{
 				if (pools[i].ReturnObjectToPool(other.gameObject))
@@ -74,7 +74,7 @@ public class Plate : MonoBehaviour {
 
 	private bool CheckIfRightCombination(Stick_Content stick) {
 		//First check if the order is right
-		if (Game_Manager.Instance.levelController.orders.TakeOrder(stick.currentOrder.order)){
+		if (Game_Manager.Instance.ganeplayManager.orders.TakeOrder(stick.currentOrder.order)){
 			int points = 0;
 
 			//Then check if the ingredients are not burnt

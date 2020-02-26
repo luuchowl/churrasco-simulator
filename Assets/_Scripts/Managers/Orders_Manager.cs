@@ -60,7 +60,7 @@ public class Orders_Manager : MonoBehaviour {
 		StartCoroutine("RandomCanSound_Routine");
 		pointsText.gameObject.SetActive(true);
 
-		player = Game_Manager.Instance.levelController.player;
+		player = Game_Manager.Instance.ganeplayManager.player;
 	}
 
 	private IEnumerator Order_Routine() {
@@ -180,7 +180,7 @@ public class Orders_Manager : MonoBehaviour {
 		
 		if(wrongs >= mistakesPermitted) {
 			player.acting = true;
-			Game_Manager.Instance.levelController.GameOver();
+			Game_Manager.Instance.ganeplayManager.GameOver();
 		}
 
 		for (int i = 0; i < wrongs; i++) {
