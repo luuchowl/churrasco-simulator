@@ -14,7 +14,7 @@ public class SpawnKidHand : MonoBehaviour {
 	public GameObject dogHandPrefab;
 
 	private void Awake() {
-		Game_Manager.Instance.levelController.menu.gameStarted.AddListener(StartSpawners);
+
 	}
 
 	private void Update() {

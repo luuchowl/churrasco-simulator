@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Video;
 using UnityEngine.Audio;
 using UnityEngine.UI;
-using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class MainMenu_Controller : MonoBehaviour {
 	public LerpPosition camPos;
@@ -22,15 +22,12 @@ public class MainMenu_Controller : MonoBehaviour {
 	public Slider sfxSlider;
 	[BoxTitle("Tutorial")]
 	public Transform tutorialViewPosition;
-	public VideoPlayer player;
+	public VideoPlayer videoPlayer;
 	public LerpPosition tutorialPhone;
 	public Transform showPhonePosition;
 	public Transform restPhonePosition;
 	[BoxTitle("Credits")]
 	public Transform creditsViewPosition;
-	[BoxTitle("Game Start")]
-	public Transform gameViewPosition;
-	public UnityEvent gameStarted = new UnityEvent();
 
 	private void Start() {
 		ShowTitleScreen();
@@ -52,6 +49,20 @@ public class MainMenu_Controller : MonoBehaviour {
 		sfxSlider.value = Mathf.InverseLerp(-80, 20, value);
 	}
 
+	public void StartGame()
+	{
+		//Game_Manager.Instance.levelController.orders.Iniciar();
+		//Game_Manager.Instance.levelController.speeches.StartSpeeches();
+		//Sound_Manager.Instance.PlayRandomSFX(true, Sound_Manager.Instance.audioHolder.burningCoal.simple);
+
+
+		LoadingScreen_Controller.Instance.FadeIn();
+		LoadingScreen_Controller.Instance.fadeInEnded.AddListener(() =>
+		{
+
+		});
+	}
+
 	public void ShowTitleScreen() {
 		camPos.SetPos(titleViewPosition);
 
@@ -69,18 +80,7 @@ public class MainMenu_Controller : MonoBehaviour {
 		showMenuButton.SetActive(false);
 		menuPanel.gameObject.SetActive(true);
 		backButton.SetActive(false);
-		player.Stop();
-	}
-
-	public void StartGame() {
-		Game_Manager.Instance.levelController.orders.Iniciar();
-		Game_Manager.Instance.levelController.speeches.StartSpeeches();
-		Sound_Manager.Instance.PlayRandomSFX(true, Sound_Manager.Instance.audioHolder.burningCoal.simple);
-
-		gameStarted.Invoke();
-
-		menuPanel.gameObject.SetActive(false);
-		camPos.SetPos(gameViewPosition);
+		videoPlayer.Stop();
 	}
 
 	public void ShowCredits() {
@@ -96,7 +96,7 @@ public class MainMenu_Controller : MonoBehaviour {
 		backButton.SetActive(true);
 		menuPanel.gameObject.SetActive(false);
 		tutorialPhone.SetPos(showPhonePosition);
-		player.Play();
+		videoPlayer.Play();
 	}
 
 	public void Mute(bool muteSound) {
