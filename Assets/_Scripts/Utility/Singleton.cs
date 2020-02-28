@@ -43,6 +43,8 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour {
 	}
 
 	protected virtual void Awake() {
+		m_ShuttingDown = false;
+
 		//Guarantees that there'll ever be only one of this object in the scene
 		if(m_Instance != null && m_Instance != this) {
 			Destroy(this.gameObject);
@@ -59,6 +61,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour {
 	protected virtual void OnDestroy() {
 		if(m_Instance == this) {
 			m_ShuttingDown = true;
+			m_Instance = null;
 		}
 	}
 }

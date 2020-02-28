@@ -7,22 +7,38 @@ public class GoToScene : MonoBehaviour {
 	public bool goOnEnable;
 	public string sceneName;
 	public int sceneBuildIndex;
+	public bool useLoadingScreen = true;
 
 	private void OnEnable() {
 		if (goOnEnable) {
 			if(sceneName != string.Empty) {
-				SceneManager.LoadScene(sceneName);
+				GoToSceneByName(sceneName);
 			} else {
-				SceneManager.LoadScene(sceneBuildIndex);
+				GoToSceneByID(sceneBuildIndex);
 			}
 		}
 	}
 
 	public void GoToSceneByName(string _sceneName) {
-		SceneManager.LoadScene(_sceneName);
+		if (useLoadingScreen)
+		{
+			LoadingScreen_Controller.Instance.ChangeScene(_sceneName);
+		}
+		else
+		{
+			SceneManager.LoadScene(_sceneName);
+		}
+
 	}
 
 	public void GoToSceneByID(int buildIndex) {
-		SceneManager.LoadScene(buildIndex);
+		if (useLoadingScreen)
+		{
+			LoadingScreen_Controller.Instance.ChangeScene(SceneManager.GetSceneByBuildIndex(buildIndex).name);
+		}
+		else
+		{
+			SceneManager.LoadScene(buildIndex);
+		}
 	}
 }

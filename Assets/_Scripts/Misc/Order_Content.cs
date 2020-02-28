@@ -23,7 +23,7 @@ public class Order_Content : MonoBehaviour {
 	}
 
 	public void Disable() { //TODO remove later?
-		Game_Manager.Instance.ganeplayManager.orders.currentOrders.Remove(this);
+		Gameplay_Manager.Instance.orders.currentOrders.Remove(this);
 		//Game_Manager.Instance.levelController.orders.AddWrong();
 		CancelInvoke();
 		gameObject.SetActive(false);

@@ -5,14 +5,15 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Events;
 
-public class Orders_Manager : MonoBehaviour {
+public class Orders_Manager : MonoBehaviour
+{
 	[BoxTitle("References")]
 	public RectTransform orderParent;
 	public ObjectPool orderPool;
 	public ObjectPool ingredientPool;
 	public Ingredients_Database ingredientsDatabase;
 	public TextMeshProUGUI pointsText;
-	
+
 	public GameObject[] wrongSymbols;
 	[BoxTitle("Properties")]
 	public int maxOrders = 5;
@@ -26,55 +27,63 @@ public class Orders_Manager : MonoBehaviour {
 	public Color[] postItColors;
 	[BoxTitle("Misc")]
 	public List<Order_Content> currentOrders = new List<Order_Content>();
-	public UnityEvent startGame = new UnityEvent();
-	
+
 	private Animator pointsAnim;
 	private int wrongs;
 	private Player_Controller player;
 	private int lastColorID;
 
-	private void OnEnable() {
-		Game_Manager.Instance.addPointsAction += AddPoints;
+	private void Awake()
+	{
+		Gameplay_Manager.Instance.gameStartEvent.AddListener(Initialize);
 	}
 
-	private void OnDisable() {
-		Game_Manager.Instance.addPointsAction -= AddPoints;
+	private void OnEnable()
+	{
+		GlobalGame_Manager.Instance.addPointsAction += AddPoints;
 	}
 
-	private void Start() {
-		pointsText.text = "" + Game_Manager.Instance.GetPoints();
+	private void OnDisable()
+	{
+		GlobalGame_Manager.Instance.addPointsAction -= AddPoints;
+	}
+
+	private void Start()
+	{
+		pointsText.text = $"{GlobalGame_Manager.Instance.GetPoints()}";
 		pointsAnim = pointsText.GetComponent<Animator>();
-		
+
 		pointsText.gameObject.SetActive(false);
 
-		for (int i = 0; i < wrongSymbols.Length; i++) {
+		for (int i = 0; i < wrongSymbols.Length; i++)
+		{
 			wrongSymbols[i].SetActive(false);
 		}
 	}
 
-	[ContextMenu("Play game")]
-	public void Iniciar() {
-		startGame.Invoke();
-
+	public void Initialize()
+	{
 		StartCoroutine("Order_Routine");
-		StartCoroutine("RandomCanSound_Routine");
 		pointsText.gameObject.SetActive(true);
 
-		player = Game_Manager.Instance.ganeplayManager.player;
+		player = Gameplay_Manager.Instance.player;
 	}
 
-	private IEnumerator Order_Routine() {
+	private IEnumerator Order_Routine()
+	{
 		yield return new WaitForSeconds(startDelay);
 		int stepCounter = 0;
 		float lastStep = Time.time;
 
 
-		while (true) {
-			if (currentOrders.Count < maxOrders) {
+		while (true)
+		{
+			if (currentOrders.Count < maxOrders)
+			{
 				MakeOrder();
 			}
 
-			if(lastStep - Time.time > difficultyStepTime)
+			if (lastStep - Time.time > difficultyStepTime)
 			{
 				lastStep = Time.time;
 				stepCounter++;
@@ -84,19 +93,22 @@ public class Orders_Manager : MonoBehaviour {
 		}
 	}
 
-	public void MakeOrder() {
+	public void MakeOrder()
+	{
 		Order_Content order = orderPool.GetPooledObject<Order_Content>(orderParent);
 
 		int colorId = 0;
 
-		do {
+		do
+		{
 			colorId = Random.Range(0, postItColors.Length);
 		} while (colorId == lastColorID);
 
 		order.postIt.color = postItColors[colorId];
 
 		int childCount = order.ingredientsHolder.childCount;
-		for (int i = 0; i < childCount; i++) {
+		for (int i = 0; i < childCount; i++)
+		{
 			ingredientPool.ReturnObjectToPool(order.ingredientsHolder.GetChild(0).gameObject);
 		}
 
@@ -104,8 +116,9 @@ public class Orders_Manager : MonoBehaviour {
 
 		//TODO change from random?
 		int ingredientsAmount = Random.Range(minMaxNumberOfIngredients.x, minMaxNumberOfIngredients.y + 1);
-		
-		for (int i = 0; i < ingredientsAmount; i++) {
+
+		for (int i = 0; i < ingredientsAmount; i++)
+		{
 			Image ingredient = ingredientPool.GetPooledObject<Image>(order.ingredientsHolder);
 			int id = Random.Range(0, ingredientsDatabase.ingredientsSprites.Length);
 			ingredient.sprite = ingredientsDatabase.ingredientsSprites[id];
@@ -119,11 +132,16 @@ public class Orders_Manager : MonoBehaviour {
 		LayoutRebuilder.MarkLayoutForRebuild(orderParent);
 	}
 
-	public bool TakeOrder(Order o) {
-		if (CheckIfOrderIsRight(o)) {
+	public bool TakeOrder(Order o)
+	{
+		if (CheckIfOrderIsRight(o))
+		{
 			return true;
-		} else {
-			if(currentOrders.Count > 0) { //Remove the first order if it's wrong
+		}
+		else
+		{
+			if (currentOrders.Count > 0)
+			{ //Remove the first order if it's wrong
 				currentOrders[0].gameObject.SetActive(false);
 				currentOrders.Remove(currentOrders[0]);
 			}
@@ -132,13 +150,16 @@ public class Orders_Manager : MonoBehaviour {
 		return false;
 	}
 
-	private void AddPoints(int amount) {
-		pointsText.text = "" + Game_Manager.Instance.GetPoints();
+	private void AddPoints(int amount)
+	{
+		pointsText.text = "" + GlobalGame_Manager.Instance.GetPoints();
 		pointsAnim.SetTrigger("PointAdded");
 	}
 
-	private bool CheckIfOrderIsRight(Order order) {
-		for (int i = 0; i < currentOrders.Count; i++) {
+	private bool CheckIfOrderIsRight(Order order)
+	{
+		for (int i = 0; i < currentOrders.Count; i++)
+		{
 			int points = 0;
 
 			//Check if the lenght of the ingredients are the same
@@ -148,52 +169,50 @@ public class Orders_Manager : MonoBehaviour {
 			//Debug.Log(currentOrders[i] == null);
 			//Debug.Log(currentOrders[i].order == null);
 			//Debug.Log(currentOrders[i].order.ingredients == null);
-			if (order.ingredients.Count != currentOrders[i].order.ingredients.Count) {
+			if (order.ingredients.Count != currentOrders[i].order.ingredients.Count)
+			{
 				continue;
 			}
-			
+
 			//If it is, then check if the ingredients are the same
-			for (int j = 0; j < order.ingredients.Count; j++) {
+			for (int j = 0; j < order.ingredients.Count; j++)
+			{
 				//Comment this and uncomment the "if" below if you want the order of the ingredients to matter
-				if (currentOrders[i].order.ingredients.Contains(order.ingredients[j])) {
+				if (currentOrders[i].order.ingredients.Contains(order.ingredients[j]))
+				{
 					points++;
 				}
-				
+
 				//if (order.ingredients[j] == currentOrders[i].order.ingredients[j]) {
 				//	points++; //We add a point for each correct ingredient
 				//}
 			}
 
 			//Now we check the points, if it's the same amount as the ingredients, then the recipe is correct
-			if (points == currentOrders[i].order.ingredients.Count) {
+			if (points == currentOrders[i].order.ingredients.Count)
+			{
 				currentOrders[i].gameObject.SetActive(false);
 				currentOrders.Remove(currentOrders[i]);
 				return true;
 			}
 		}
-		
+
 		return false;
 	}
 
-	public void AddWrong() {
+	public void AddWrong()
+	{
 		wrongs++;
-		
-		if(wrongs >= mistakesPermitted) {
+
+		if (wrongs >= mistakesPermitted)
+		{
 			player.acting = true;
-			Game_Manager.Instance.ganeplayManager.GameOver();
+			Gameplay_Manager.Instance.GameOver();
 		}
 
-		for (int i = 0; i < wrongs; i++) {
+		for (int i = 0; i < wrongs; i++)
+		{
 			wrongSymbols[i].SetActive(true);
-		}
-	}
-
-	
-
-	private IEnumerator RandomCanSound_Routine() {
-		while (true) {
-			yield return new WaitForSeconds(Random.Range(5f, 15f));
-			Sound_Manager.Instance.PlayRandomSFX(Sound_Manager.Instance.audioHolder.openCan.simple);
 		}
 	}
 }

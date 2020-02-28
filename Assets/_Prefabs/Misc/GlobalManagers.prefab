@@ -150,6 +150,7 @@ Transform:
   m_Children:
   - {fileID: 4763786500659318}
   - {fileID: 4368243062442884}
+  - {fileID: 4497452342945151209}
   - {fileID: 224851441581619916}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -166,7 +167,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a68d3bd5d8cb9b41be2139f18b218a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelController: {fileID: 0}
+  gamePreferences: {fileID: 11400000, guid: 603da8e7202f1434d83535082e4c4a28, type: 2}
+  lastModeSelected: 
 --- !u!114 &114180414526410372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,6 +181,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1921f24e62daccc4fb036b1bf6ef80f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &8599441831373443478
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4497452342945151209}
+  - component: {fileID: 194493522823438773}
+  m_Layer: 0
+  m_Name: Request_Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4497452342945151209
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8599441831373443478}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4396012721719032}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &194493522823438773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8599441831373443478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22961173efaea0d4fb5d81aea72ba82a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  requestMade:
+    m_PersistentCalls:
+      m_Calls: []
+  requestDone:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &574812063551979778
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -224,7 +275,7 @@ PrefabInstance:
     - target: {fileID: 352672440768592846, guid: c335c9fdb71b61f48bab28a5ee7f07f1,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 352672440768592846, guid: c335c9fdb71b61f48bab28a5ee7f07f1,
         type: 3}

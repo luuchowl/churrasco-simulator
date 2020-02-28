@@ -455,8 +455,8 @@ MonoBehaviour:
     m_Bits: 24370
   smoothness: 0.5
   showCursor: 1
-  hand: {fileID: 4863961597342118}
-  anim: {fileID: 95644872068810084}
+  hand: {fileID: 7788720875270513240}
+  anim: {fileID: 7788720875280125368}
   screenTransparentArea: 200
   opacityWhenTransparent: 0.5
   rendToMakeTransparent:
@@ -1262,6 +1262,12 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 65b4095455d84c6428b0f3f70d571855, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d09e385514d05f418168d3148c191ef, type: 3}
+--- !u!95 &7788720875280125368 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9500000, guid: 6d09e385514d05f418168d3148c191ef,
+    type: 3}
+  m_PrefabInstance: {fileID: 7788720875270650072}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7788720875270513240 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 6d09e385514d05f418168d3148c191ef,

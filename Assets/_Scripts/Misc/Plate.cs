@@ -14,18 +14,18 @@ public class Plate : MonoBehaviour {
 
 			if (CheckIfRightCombination(stick)) {
 				Debug.Log("Correct!");
-				Game_Manager.Instance.AddPoints(correctPoints);
+				GlobalGame_Manager.Instance.AddPoints(correctPoints);
 			} else {
 				Debug.Log("Incorrect...");
-				Game_Manager.Instance.AddPoints(wrongPoints);
-				Game_Manager.Instance.ganeplayManager.orders.AddWrong();
+				GlobalGame_Manager.Instance.AddPoints(wrongPoints);
+				Gameplay_Manager.Instance.orders.AddWrong();
 			}
 
 			//Clear the ingredients
 			stick.ReturnFoodsToPool();
 
 			//Return the Stick
-			ObjectPool[] pools = Game_Manager.Instance.ganeplayManager.pools;
+			ObjectPool[] pools = Gameplay_Manager.Instance.pools;
 			for (int i = 0; i < pools.Length; i++) {
 				if (pools[i].ReturnObjectToPool(other.gameObject)) {
 					break;
@@ -43,12 +43,12 @@ public class Plate : MonoBehaviour {
 
 			bool correct = false;
 
-			if (Game_Manager.Instance.ganeplayManager.orders.TakeOrder(o))
+			if (Gameplay_Manager.Instance.orders.TakeOrder(o))
 			{
 				if (f.currentStage == Food.stage.WellDone)
 				{
 					Debug.Log("Correct!");
-					Game_Manager.Instance.AddPoints(correctPoints);
+					GlobalGame_Manager.Instance.AddPoints(correctPoints);
 					correct = true;
 				}
 			}
@@ -56,12 +56,12 @@ public class Plate : MonoBehaviour {
 			if (!correct)
 			{
 				Debug.Log("Incorrect...");
-				Game_Manager.Instance.AddPoints(wrongPoints);
-				Game_Manager.Instance.ganeplayManager.orders.AddWrong();
+				GlobalGame_Manager.Instance.AddPoints(wrongPoints);
+				Gameplay_Manager.Instance.orders.AddWrong();
 			}
 
 			//Return the Ingredient
-			ObjectPool[] pools = Game_Manager.Instance.ganeplayManager.pools;
+			ObjectPool[] pools = Gameplay_Manager.Instance.pools;
 			for (int i = 0; i < pools.Length; i++)
 			{
 				if (pools[i].ReturnObjectToPool(other.gameObject))
@@ -74,7 +74,7 @@ public class Plate : MonoBehaviour {
 
 	private bool CheckIfRightCombination(Stick_Content stick) {
 		//First check if the order is right
-		if (Game_Manager.Instance.ganeplayManager.orders.TakeOrder(stick.currentOrder.order)){
+		if (Gameplay_Manager.Instance.orders.TakeOrder(stick.currentOrder.order)){
 			int points = 0;
 
 			//Then check if the ingredients are not burnt

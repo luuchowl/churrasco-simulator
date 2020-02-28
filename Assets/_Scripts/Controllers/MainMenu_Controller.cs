@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.Video;
 using UnityEngine.Audio;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class MainMenu_Controller : MonoBehaviour {
 	public LerpPosition camPos;
@@ -123,15 +122,8 @@ public class MainMenu_Controller : MonoBehaviour {
 
 	public void StartQuickPlay()
 	{
-		//Game_Manager.Instance.levelController.orders.Iniciar();
-		//Game_Manager.Instance.levelController.speeches.StartSpeeches();
-		//Sound_Manager.Instance.PlayRandomSFX(true, Sound_Manager.Instance.audioHolder.burningCoal.simple);
-
-
-		LoadingScreen_Controller.Instance.FadeIn();
-		LoadingScreen_Controller.Instance.fadeInEnded.AddListener(() =>
-		{
-			SceneManager.LoadScene("Quick Play");
-		});
+		string mode = "QuickPlay";
+		GlobalGame_Manager.Instance.lastModeSelected = mode;
+		LoadingScreen_Controller.Instance.ChangeScene(mode);
 	}
 }

@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class LoadingScreen_Controller : Singleton<LoadingScreen_Controller> {
 
-	public Image fadeImage;
 	public float fadeDuration;
+	public Image fadeImage;
+	public GameObject loadingIcon;
 	public UnityEvent fadeInEnded = new UnityEvent();
 	public UnityEvent fadeOutEnded = new UnityEvent();
 
@@ -17,16 +19,25 @@ public class LoadingScreen_Controller : Singleton<LoadingScreen_Controller> {
 	{
 		imgColor = fadeImage.color;
 		fadeImage.gameObject.SetActive(false);
+		loadingIcon?.SetActive(false);
 	}
 
 	public void FadeIn()
 	{
+		fadeInEnded.AddListener(() => {
+			loadingIcon?.SetActive(true);
+		});
+
 		StartCoroutine(Fade_Routine(0, 1, fadeInEnded));
 	}
 
 	public void FadeOut()
 	{
-		fadeOutEnded.AddListener(() => { fadeImage.gameObject.SetActive(false); });
+		fadeOutEnded.AddListener(() => { 
+			fadeImage.gameObject.SetActive(false); 
+		});
+
+		loadingIcon?.SetActive(false);
 		StartCoroutine(Fade_Routine(1, 0, fadeOutEnded));
 	}
 
@@ -50,5 +61,14 @@ public class LoadingScreen_Controller : Singleton<LoadingScreen_Controller> {
 
 		finishedEvent.Invoke();
 		finishedEvent.RemoveAllListeners();
+	}
+
+	public void ChangeScene(string sceneName)
+	{
+		FadeIn();
+		fadeInEnded.AddListener(() =>
+		{
+			SceneManager.LoadSceneAsync(sceneName);
+		});
 	}
 }

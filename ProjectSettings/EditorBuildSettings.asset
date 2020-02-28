@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/_Scenes/Final/TitleScreen.unity
     guid: f3264d0368011984bb3d0accb8a02522
   - enabled: 1
-    path: Assets/_Scenes/Final/GameModes/Quick Play.unity
+    path: Assets/_Scenes/Final/GameModes/QuickPlay.unity
     guid: 4ccf58b8c981ca14790250d018b1f4da
   - enabled: 1
     path: Assets/_Scenes/Final/GameOver.unity

@@ -4,8 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
 
-public class Game_Manager : Singleton<Game_Manager> {
-	public Gameplay_Manager ganeplayManager;
+public class GlobalGame_Manager : Singleton<GlobalGame_Manager> {
+	public GamePreferences gamePreferences;
+	public string lastModeSelected;
 
 	public event Action<int> addPointsAction;
 
@@ -30,7 +31,6 @@ public class Game_Manager : Singleton<Game_Manager> {
 
 	private void OnSceneUnloaded(Scene scene) {
 		Sound_Manager.Instance.StopAll();
-		ganeplayManager = null;
 	}
 
 	public void AddPoints(int amount) {

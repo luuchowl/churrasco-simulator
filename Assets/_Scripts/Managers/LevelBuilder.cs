@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class RandomLevel_Manager : MonoBehaviour {
+public class LevelBuilder : MonoBehaviour {
 	public Props_Database database;
 	public Transform[] ground;
 	public Transform[] wall;
@@ -40,6 +40,8 @@ public class RandomLevel_Manager : MonoBehaviour {
 		dst.position = src.position;
 		dst.rotation = src.rotation;
 		dst.localScale = src.localScale;
+
+		dst.SetParent(src.parent);
 
 		Destroy(src.gameObject);
 	}

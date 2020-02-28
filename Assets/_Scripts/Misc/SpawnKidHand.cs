@@ -47,7 +47,7 @@ public class SpawnKidHand : MonoBehaviour {
 
 	public void SpawnHand() {
 		Debug.Log("Trying to spawn kid hand...");
-		if (Game_Manager.Instance.ganeplayManager.grill.objectsOnGrill.Count > 0) {
+		if (Gameplay_Manager.Instance.grill.objectsOnGrill.Count > 0) {
 			Transform spawn = spawnTransformers[(int)Mathf.Round(Random.Range(0f, 1f))];
 
 			StealChurras hand;

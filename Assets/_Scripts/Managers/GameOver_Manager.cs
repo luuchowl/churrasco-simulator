@@ -28,7 +28,6 @@ public class GameOver_Manager : MonoBehaviour {
 	private string[] topNameList;
 
 	private void OnEnable() {
-		Debug.Log(Application.persistentDataPath);
 		leaderboardPanel.SetActive(false);
 		gameOverText.text = gameOverTexts[UnityEngine.Random.Range(0, gameOverTexts.Length)];
 		namePanel.SetActive(false);
@@ -42,7 +41,7 @@ public class GameOver_Manager : MonoBehaviour {
 
 		yield return new WaitForSeconds(2);
 
-		playerPoints.text = "Sua pontuação: " + Game_Manager.Instance.GetPoints();
+		playerPoints.text = "Sua pontuação: " + GlobalGame_Manager.Instance.GetPoints();
 		topPlayers.text = "Carregando...";
 
 		leaderboardPanel.SetActive(true);
@@ -66,7 +65,7 @@ public class GameOver_Manager : MonoBehaviour {
 		else
 		{
 			UriBuilder uri = new UriBuilder(baseURL + "/getRank.php");
-			yield return StartCoroutine(Request_Manager.Instance.GET_Routine(uri, getLeaderBoard_Callback));
+			yield return StartCoroutine(Request_Manager.Instance.GET_Routine(uri, GetLeaderBoard_Callback));
 		}
 
 		if(ranks == null) {
@@ -102,7 +101,7 @@ public class GameOver_Manager : MonoBehaviour {
 		}
 
 		//Check if the player is on the topRank
-		if (topPointsList.Length == 0 || topPointsList.Length < topRankAmount ||topPointsList.Any(x => Game_Manager.Instance.GetPoints() > x))
+		if (topPointsList.Length == 0 || topPointsList.Length < topRankAmount ||topPointsList.Any(x => GlobalGame_Manager.Instance.GetPoints() > x))
 		{
 			//Wait for the user to type their name
 			namePanel.SetActive(true);
@@ -123,16 +122,16 @@ public class GameOver_Manager : MonoBehaviour {
 
 				if (newRank.Count == 0)
 				{
-					newRank.Add(string.Format("{0},{1}", nameInput.text, Game_Manager.Instance.GetPoints()));
+					newRank.Add(string.Format("{0},{1}", nameInput.text, GlobalGame_Manager.Instance.GetPoints()));
 				}
 				else
 				{
 					for (int i = 0; i < newRank.Count; i++)
 					{
 						string[] words = newRank[i].Split(',');
-						if (Game_Manager.Instance.GetPoints() > int.Parse(words[1]))
+						if (GlobalGame_Manager.Instance.GetPoints() > int.Parse(words[1]))
 						{
-							newRank.Insert(i, string.Format("{0},{1}", nameInput.text, Game_Manager.Instance.GetPoints()));
+							newRank.Insert(i, string.Format("{0},{1}", nameInput.text, GlobalGame_Manager.Instance.GetPoints()));
 							break;
 						}
 					}
@@ -144,14 +143,14 @@ public class GameOver_Manager : MonoBehaviour {
 	}
 
 	public void ResetGame() {
-		Game_Manager.Instance.ResetPoints();
-		SceneManager.LoadScene(sceneToReturn);
+		GlobalGame_Manager.Instance.ResetPoints();
+		LoadingScreen_Controller.Instance.ChangeScene(GlobalGame_Manager.Instance.lastModeSelected);
 	}
 
-	private void getLeaderBoard_Callback(string response) {
+	private void GetLeaderBoard_Callback(string response) {
 		Debug.Log(response);
 
-		if (string.IsNullOrEmpty(response)) {
+		if (string.IsNullOrEmpty(response) || response.Contains("Erro") || response.Contains("erro")) {
 			Debug.LogError("Error getting ranks");
 			topPlayers.text = "Não foi possível acessar o servidor";
 			return;
