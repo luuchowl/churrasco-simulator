@@ -16,7 +16,10 @@ public class AudioHolder : ScriptableObject {
     public SimpleSound burningCoal;
     public SimpleSound grillingMeat;
     public SimpleSound handShowing;
-	
+	public SimpleSound dogBark;
+	public SimpleSound wrong;
+
+
 	[System.Serializable]
 	public class SimpleSound {
 		public AudioClip[] simple;

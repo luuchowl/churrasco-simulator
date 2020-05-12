@@ -34073,6 +34073,11 @@ PrefabInstance:
       propertyPath: wrongSymbols.Array.data[2]
       value: 
       objectReference: {fileID: 1445958}
+    - target: {fileID: 114512905137215422, guid: 2e2667c621581744e8bd0608fd476d83,
+        type: 3}
+      propertyPath: orderDelay
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 114671512513614290, guid: 2e2667c621581744e8bd0608fd476d83,
         type: 3}
       propertyPath: wall.Array.data[0]

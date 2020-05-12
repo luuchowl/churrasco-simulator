@@ -10,7 +10,6 @@ public class Doggy_Controller : MonoBehaviour {
 	public float flipForce = 1;
 	public float walkForce = 1;
 	[Range(0, 1)] public float rotationSpeed = .5f;
-	public AudioClip[] dogBarks;
 	public List<Transform> snacksList = new List<Transform>();
 	[Header("Debug")]
 	public bool launchOnMouseClick;
@@ -72,7 +71,7 @@ public class Doggy_Controller : MonoBehaviour {
 		CancelInvoke("BackToUpright");
 		Invoke("BackToUpright", 1);
 
-		Sound_Manager.Instance.PlayRandomSFX(dogBarks);
+		Sound_Manager.Instance.PlayRandomSFX(Sound_Manager.Instance.audioHolder.dogBark.simple);
 	}
 
 	private void BackToUpright()

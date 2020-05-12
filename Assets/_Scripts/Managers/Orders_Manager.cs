@@ -134,17 +134,18 @@ public class Orders_Manager : MonoBehaviour
 
 	public bool TakeOrder(Order o)
 	{
-		if (CheckIfOrderIsRight(o))
+		int orderID = CheckIfOrderIsRight(o);
+
+		if (orderID != -1)
 		{
+			currentOrders[orderID].RemoveAsRight();
+			currentOrders.Remove(currentOrders[orderID]);
 			return true;
 		}
-		else
+		else if (currentOrders.Count > 0) 
 		{
-			if (currentOrders.Count > 0)
-			{ //Remove the first order if it's wrong
-				currentOrders[0].gameObject.SetActive(false);
-				currentOrders.Remove(currentOrders[0]);
-			}
+			currentOrders[0].RemoveAsWrong();
+			currentOrders.Remove(currentOrders[0]);
 		}
 
 		return false;
@@ -156,7 +157,7 @@ public class Orders_Manager : MonoBehaviour
 		pointsAnim.SetTrigger("PointAdded");
 	}
 
-	private bool CheckIfOrderIsRight(Order order)
+	private int CheckIfOrderIsRight(Order order)
 	{
 		for (int i = 0; i < currentOrders.Count; i++)
 		{
@@ -191,24 +192,29 @@ public class Orders_Manager : MonoBehaviour
 			//Now we check the points, if it's the same amount as the ingredients, then the recipe is correct
 			if (points == currentOrders[i].order.ingredients.Count)
 			{
-				currentOrders[i].gameObject.SetActive(false);
-				currentOrders.Remove(currentOrders[i]);
-				return true;
+				return i;
 			}
 		}
 
-		return false;
+		return -1;
 	}
 
 	public void AddWrong()
 	{
 		wrongs++;
 
+		//Remove the oldest entry from the list
+		
+
+		//Check if we have a game over
 		if (wrongs >= mistakesPermitted)
 		{
 			player.acting = true;
 			Gameplay_Manager.Instance.GameOver();
 		}
+
+		//Play wrong sound and shows the "X" on screen
+		Sound_Manager.Instance.PlayRandomSFX(Sound_Manager.Instance.audioHolder.wrong.simple);
 
 		for (int i = 0; i < wrongs; i++)
 		{

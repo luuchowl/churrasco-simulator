@@ -28158,6 +28158,12 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114755638703572328, guid: 3610f606a83a49541b701ade07f4b297,
+        type: 3}
+      propertyPath: audioHolder
+      value: 
+      objectReference: {fileID: 11400000, guid: b349e9e892689e0409f425ebeecb431b,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3610f606a83a49541b701ade07f4b297, type: 3}
 --- !u!1 &1262052923 stripped
@@ -40895,6 +40901,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114968847978293306, guid: 0140bfa39bf32524c8508af732a7d5ca,
         type: 3}
+      propertyPath: dogBarks.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114968847978293306, guid: 0140bfa39bf32524c8508af732a7d5ca,
+        type: 3}
       propertyPath: jumpForce
       value: 2
       objectReference: {fileID: 0}
@@ -40908,6 +40919,61 @@ PrefabInstance:
       propertyPath: minMaxJumpForce.y
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114968847978293306, guid: 0140bfa39bf32524c8508af732a7d5ca,
+        type: 3}
+      propertyPath: dogBarks.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: a1c6950ea6d3c6644be1735185bd89fb, type: 3}
+    - target: {fileID: 114968847978293306, guid: 0140bfa39bf32524c8508af732a7d5ca,
+        type: 3}
+      propertyPath: dogBarks.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: b2e08adf0090f4f4ca95c1bf4cada6f8, type: 3}
+    - target: {fileID: 114968847978293306, guid: 0140bfa39bf32524c8508af732a7d5ca,
+        type: 3}
+      propertyPath: dogBarks.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 6334263ac6da2744db49e9eadef9a372, type: 3}
+    - target: {fileID: 114968847978293306, guid: 0140bfa39bf32524c8508af732a7d5ca,
+        type: 3}
+      propertyPath: dogBarks.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 85e070f31ecb740448a4b2375a8e8057, type: 3}
+    - target: {fileID: 114968847978293306, guid: 0140bfa39bf32524c8508af732a7d5ca,
+        type: 3}
+      propertyPath: dogBarks.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: 0479f35b9759d044ca1cb72dabb4a8e2, type: 3}
+    - target: {fileID: 114968847978293306, guid: 0140bfa39bf32524c8508af732a7d5ca,
+        type: 3}
+      propertyPath: dogBarks.Array.data[5]
+      value: 
+      objectReference: {fileID: 8300000, guid: 57840e34667cf5a429d245503277d016, type: 3}
+    - target: {fileID: 114968847978293306, guid: 0140bfa39bf32524c8508af732a7d5ca,
+        type: 3}
+      propertyPath: dogBarks.Array.data[6]
+      value: 
+      objectReference: {fileID: 8300000, guid: 56303f1f74421724da2c01afcf04f980, type: 3}
+    - target: {fileID: 114968847978293306, guid: 0140bfa39bf32524c8508af732a7d5ca,
+        type: 3}
+      propertyPath: dogBarks.Array.data[7]
+      value: 
+      objectReference: {fileID: 8300000, guid: 31b7b0a9b652ad0419d85afb2adb155c, type: 3}
+    - target: {fileID: 114968847978293306, guid: 0140bfa39bf32524c8508af732a7d5ca,
+        type: 3}
+      propertyPath: dogBarks.Array.data[8]
+      value: 
+      objectReference: {fileID: 8300000, guid: 56fd8ed01e2d9004e80eb253adc10314, type: 3}
+    - target: {fileID: 114968847978293306, guid: 0140bfa39bf32524c8508af732a7d5ca,
+        type: 3}
+      propertyPath: dogBarks.Array.data[9]
+      value: 
+      objectReference: {fileID: 8300000, guid: 5a2609a57d4e9194ebb9f4b7540ccadc, type: 3}
+    - target: {fileID: 114968847978293306, guid: 0140bfa39bf32524c8508af732a7d5ca,
+        type: 3}
+      propertyPath: dogBarks.Array.data[10]
+      value: 
+      objectReference: {fileID: 8300000, guid: c2c54519bd6415c48bc3f27d287500eb, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0140bfa39bf32524c8508af732a7d5ca, type: 3}
 --- !u!1 &2033337025

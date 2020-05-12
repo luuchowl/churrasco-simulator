@@ -4,7 +4,8 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -66,3 +67,18 @@ MonoBehaviour:
   handShowing:
     simple:
     - {fileID: 8300000, guid: ad42fd71d32f14b2d8c9328e9d9470c9, type: 3}
+  dogBark:
+    simple:
+    - {fileID: 8300000, guid: a1c6950ea6d3c6644be1735185bd89fb, type: 3}
+    - {fileID: 8300000, guid: b2e08adf0090f4f4ca95c1bf4cada6f8, type: 3}
+    - {fileID: 8300000, guid: 6334263ac6da2744db49e9eadef9a372, type: 3}
+    - {fileID: 8300000, guid: 85e070f31ecb740448a4b2375a8e8057, type: 3}
+    - {fileID: 8300000, guid: 0479f35b9759d044ca1cb72dabb4a8e2, type: 3}
+    - {fileID: 8300000, guid: 57840e34667cf5a429d245503277d016, type: 3}
+    - {fileID: 8300000, guid: 56303f1f74421724da2c01afcf04f980, type: 3}
+    - {fileID: 8300000, guid: 31b7b0a9b652ad0419d85afb2adb155c, type: 3}
+    - {fileID: 8300000, guid: 56fd8ed01e2d9004e80eb253adc10314, type: 3}
+    - {fileID: 8300000, guid: 5a2609a57d4e9194ebb9f4b7540ccadc, type: 3}
+    - {fileID: 8300000, guid: c2c54519bd6415c48bc3f27d287500eb, type: 3}
+  wrong:
+    simple: []

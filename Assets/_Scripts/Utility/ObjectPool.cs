@@ -136,6 +136,11 @@ public class ObjectPool : MonoBehaviour {
 		objTransform.position = Vector3.zero;
 		objTransform.rotation = Quaternion.identity;
 		objTransform.localScale = Vector3.one;
+
+		RectTransform r = objTransform.GetComponent<RectTransform>();
+		if (r != null){
+			r.anchoredPosition = Vector2.zero;
+		}
 	}
 	#endregion
 }
