@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 114406730094600090}
   m_Layer: 9
   m_Name: QueijoPool
-  m_TagString: Ingredient
+  m_TagString: IngredientPool
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

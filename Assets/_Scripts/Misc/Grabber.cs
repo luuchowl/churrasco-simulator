@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using NaughtyAttributes;
+using UnityEngine.UI;
+using System.Linq;
+using TMPro;
 
 public class Grabber : MonoBehaviour
 {
@@ -9,6 +12,8 @@ public class Grabber : MonoBehaviour
 	public Transform normalGrabPivot;
 	public Transform closeHandGrabPivot;
 	public LayerMask grabMask;
+	public Canvas grabIconsCanvas;
+	public Image[] foodIcons;
 	[BoxTitle("Normal Grab")]
 	public AnimationCurve grabCurveDown;
 	public AnimationCurve grabCurveUp;
@@ -35,6 +40,8 @@ public class Grabber : MonoBehaviour
 
 	void Awake()
 	{
+		grabIconsCanvas.gameObject.SetActive(false);
+
 		initPos = handPivot.localPosition;
 		initRot = handPivot.localRotation;
 		Gameplay_Manager.Instance.gameStartEvent.AddListener(Initialize);
@@ -50,8 +57,10 @@ public class Grabber : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
+		
 		if (ready)
 		{
+			//Click
 			if (Input.GetMouseButtonDown(0) && !controller.acting)
 			{
 				if (controller.hitObject != null && Helper.LayerMaskContains(grabMask, controller.hitObject.gameObject))
@@ -70,7 +79,7 @@ public class Grabber : MonoBehaviour
 
 							if (f == null || f.stick == null)
 							{
-								StartCoroutine("GrabObjectWithStick", mainObj);
+								StartCoroutine(GrabObjectWithStick_Routine(mainObj));
 							}
 							else
 							{
@@ -94,8 +103,8 @@ public class Grabber : MonoBehaviour
 			{
 				if (withStick)
 				{
-					controller.anim.SetBool("HoldClose", true);
 					controller.anim.SetBool("HoldOpen", false);
+					controller.anim.SetBool("HoldClose", true);
 				}
 				else
 				{
@@ -113,25 +122,27 @@ public class Grabber : MonoBehaviour
 
 	private void FreeHandActions(GameObject obj)
 	{
-		if (obj.tag == "Stick")
+
+		switch (obj.tag)
 		{
-			StartCoroutine("GrabObject", obj);
-		}
-		else if (obj.tag == "Ingredient")
-		{
-			Food food = obj.GetComponent<Food>();
-			if (food != null && food.stick != null)
-			{
-				StartCoroutine("GrabObject", food.stick.gameObject);
-			}
-			else
-			{
-				StartCoroutine("GrabObject", obj);
-			}
+			case "Ingredient":
+				Food food = obj.GetComponent<Food>();
+				if (food != null && food.stick != null)
+				{
+					StartCoroutine(GrabObject_Routine(food.stick.gameObject));
+				}
+				else
+				{
+					StartCoroutine(GrabObject_Routine(obj));
+				}
+				break;
+			default:
+				StartCoroutine(GrabObject_Routine(obj));
+				break;
 		}
 	}
 
-	private IEnumerator GrabObject(GameObject objectToGrab)
+	private IEnumerator GrabObject_Routine(GameObject objectToGrab)
 	{
 		controller.acting = true;
 		float timePassed = 0;
@@ -151,36 +162,8 @@ public class Grabber : MonoBehaviour
 			yield return null;
 		}
 
-		//Grab
-		Transform pivot = GetCorrectPivot(objectToGrab);
-
-		ObjectPool pool = objectToGrab.GetComponent<ObjectPool>();
-		if (pool != null)
-		{
-			objectToGrab = pool.GetPooledObject(false);
-			objectToGrab.GetComponent<Poolable>().pool = pool;
-		}
-
-		stick = objectToGrab.GetComponent<Stick_Content>();
-		if (stick != null)
-		{
-			stick.Grab();
-			objectToGrab.transform.localRotation = pivot.rotation;
-			Sound_Manager.Instance.PlayRandomSFX(Sound_Manager.Instance.audioHolder.pickingUpOther.simple);
-		}
-		else
-		{
-			objectToGrab.transform.localRotation = Quaternion.Euler(Random.insideUnitSphere * 360f);
-			Sound_Manager.Instance.PlayRandomSFX(objectToGrab.GetComponent<Food>().grabClips);
-		}
-
-		grabObject = objectToGrab;
-		Rigidbody objectRB = grabObject.GetComponent<Rigidbody>();
-		objectRB.isKinematic = true;
-		objectRB.transform.position = pivot.position;
-		objectRB.transform.SetParent(pivot);
-		isGrabbing = true;
-		grill.RemoveFromGrill(objectRB.GetComponent<Cookable>());
+		//Find out which object we're grabbing
+		GrabObject(objectToGrab);
 
 		//Up
 		timePassed = 0;
@@ -202,7 +185,52 @@ public class Grabber : MonoBehaviour
 		finishedGrabbing = true;
 	}
 
-	private IEnumerator GrabObjectWithStick(GameObject objectToStick)
+	private void GrabObject(GameObject objectToGrab)
+	{
+		//Get tye correct pivot
+		Transform pivot = GetCorrectPivot(objectToGrab);
+
+		//Is the object a pool?
+		if(objectToGrab.tag == "IngredientPool" || objectToGrab.tag == "StickPool")
+		{
+			ObjectPool pool = objectToGrab.GetComponent<ObjectPool>();
+			objectToGrab = pool.GetPooledObject(false);
+			objectToGrab.GetComponent<Poolable>().pool = pool;
+		}
+
+		//Is the object a Stick?
+		if(objectToGrab.tag == "Stick")
+		{
+			stick = objectToGrab.GetComponent<Stick_Content>();
+			stick.Grab();
+			objectToGrab.transform.localRotation = pivot.rotation;
+			Sound_Manager.Instance.PlayRandomSFX(Sound_Manager.Instance.audioHolder.pickingUpOther.simple);
+			
+			if(stick.foods.Count > 0)
+			{
+				ShowIcons(stick.foods.Select(x => x.ingredientImage).ToArray());
+			}
+		}
+
+		//Is it an Ingredient?
+		if (objectToGrab.tag == "Ingredient")
+		{
+			Food food = objectToGrab.GetComponent<Food>();
+			objectToGrab.transform.localRotation = Quaternion.Euler(Random.insideUnitSphere * 360f);
+			Sound_Manager.Instance.PlayRandomSFX(objectToGrab.GetComponent<Food>().grabClips);
+			ShowIcons(food.ingredientImage);
+		}
+
+		grabObject = objectToGrab;
+		Rigidbody objectRB = grabObject.GetComponent<Rigidbody>();
+		objectRB.isKinematic = true;
+		objectRB.transform.position = pivot.position;
+		objectRB.transform.SetParent(pivot);
+		isGrabbing = true;
+		grill.RemoveFromGrill(objectRB.GetComponent<Cookable>());
+	}
+
+	private IEnumerator GrabObjectWithStick_Routine(GameObject objectToStick)
 	{
 		if (stick.foods.Count >= stick.ingredientsPivots.Length)
 		{
@@ -251,6 +279,7 @@ public class Grabber : MonoBehaviour
 			food.col.enabled = false;
 			stick.AddIngredient(food);
 			Sound_Manager.Instance.PlayRandomSFX(food.grabClips);
+			ShowIcons(stick.foods.Select(x => x.ingredientImage).ToArray());
 		}
 
 		grill.RemoveFromGrill(objectToStick.GetComponent<Cookable>());
@@ -300,16 +329,36 @@ public class Grabber : MonoBehaviour
 			stick.Release();
 			stick = null;
 		}
+
+		grabIconsCanvas.gameObject.SetActive(false);
 	}
 
 	private Transform GetCorrectPivot(GameObject c)
 	{
-		if (c.CompareTag("Stick"))
+		if (c.tag == "Stick" || c.tag == "StickPool")
 		{
 			withStick = true;
 			return closeHandGrabPivot;
 		}
 
 		return normalGrabPivot;
+	}
+
+	private void ShowIcons(params Sprite[] icons)
+	{
+		grabIconsCanvas.gameObject.SetActive(true);
+
+		for (int i = 0; i < foodIcons.Length; i++)
+		{
+			if(i < icons.Length)
+			{
+				foodIcons[i].gameObject.SetActive(true);
+				foodIcons[i].sprite = icons[i];
+			}
+			else
+			{
+				foodIcons[i].gameObject.SetActive(false);
+			}
+		}
 	}
 }
