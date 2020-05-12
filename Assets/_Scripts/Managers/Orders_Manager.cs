@@ -45,7 +45,10 @@ public class Orders_Manager : MonoBehaviour
 
 	private void OnDisable()
 	{
-		GlobalGame_Manager.Instance.addPointsAction -= AddPoints;
+		if (GlobalGame_Manager.Instance != null)
+		{
+			GlobalGame_Manager.Instance.addPointsAction -= AddPoints;
+		}
 	}
 
 	private void Start()

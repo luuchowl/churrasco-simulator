@@ -220,7 +220,7 @@ Transform:
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 4050369282690968}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!33 &33429309990842886
 MeshFilter:
@@ -433,6 +433,7 @@ Transform:
   m_LocalPosition: {x: 0.16177276, y: 0.77, z: 2.68}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 6752048706416183093}
   - {fileID: 4957735683442558}
   - {fileID: 4715616566956184}
   m_Father: {fileID: 0}
@@ -696,9 +697,8 @@ Transform:
   - {fileID: 4863961597342118}
   - {fileID: 4610850532604448}
   - {fileID: 4949471439573282}
-  - {fileID: 6752048706416183093}
   m_Father: {fileID: 4050369282690968}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: -29.52, z: 0}
 --- !u!135 &135005123275740092
 SphereCollider:
@@ -731,11 +731,12 @@ MonoBehaviour:
   grabMask:
     serializedVersion: 2
     m_Bits: 4608
-  grabIconsCanvas: {fileID: 6614711365048380722}
+  grabCanvas: {fileID: 6614711365048380722}
   foodIcons:
   - {fileID: 1424565062555637700}
   - {fileID: 4786167962954022751}
   - {fileID: 959585244574603469}
+  grabCanvasAnimDuration: 0
   grabCurveDown:
     serializedVersion: 2
     m_Curve:
@@ -1254,7 +1255,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f3a3b40fe49a05243b4ba2500fbc4808, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f0cee70cc3c42a14d9d50a6f76717ab5, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1290,17 +1291,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3680720367674442481}
-  m_LocalRotation: {x: -0, y: 0.2547708, z: -0, w: 0.9670015}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: 0.000000014901161, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.04099989}
   m_LocalScale: {x: 0.00125, y: 0.00125, z: 0.00125}
   m_Children:
   - {fileID: 2919264839508308182}
-  m_Father: {fileID: 4957735683442558}
-  m_RootOrder: 4
+  m_Father: {fileID: 4050369282690968}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.027999997, y: 0.29999995}
   m_SizeDelta: {x: 800, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &6614711365048380722
@@ -1415,7 +1416,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000029802436, y: 59.39997}
+  m_AnchoredPosition: {x: -0.0000029802436, y: 85.8}
   m_SizeDelta: {x: 0, y: 100}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &6778732604325631079
@@ -1439,7 +1440,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1466,8 +1467,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 15
-    m_Right: 15
+    m_Left: 25
+    m_Right: 25
     m_Top: 15
     m_Bottom: 15
   m_ChildAlignment: 0
@@ -1625,7 +1626,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f3a3b40fe49a05243b4ba2500fbc4808, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8eab049419f13804cafeb6071bc7ac81, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1711,15 +1712,15 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 65b4095455d84c6428b0f3f70d571855, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d09e385514d05f418168d3148c191ef, type: 3}
---- !u!95 &7788720875280125368 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 9500000, guid: 6d09e385514d05f418168d3148c191ef,
-    type: 3}
-  m_PrefabInstance: {fileID: 7788720875270650072}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7788720875270513240 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 6d09e385514d05f418168d3148c191ef,
+    type: 3}
+  m_PrefabInstance: {fileID: 7788720875270650072}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &7788720875280125368 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9500000, guid: 6d09e385514d05f418168d3148c191ef,
     type: 3}
   m_PrefabInstance: {fileID: 7788720875270650072}
   m_PrefabAsset: {fileID: 0}

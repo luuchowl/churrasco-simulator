@@ -5661,6 +5661,11 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 114170543723128218, guid: 7abe43bd100bb6147865709a84813949,
+        type: 3}
+      propertyPath: grabCanvasAnimDuration
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 975045381215978960, guid: 7abe43bd100bb6147865709a84813949,
         type: 3}
       propertyPath: m_AnchorMin.y

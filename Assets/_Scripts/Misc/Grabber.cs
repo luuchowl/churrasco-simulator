@@ -12,8 +12,9 @@ public class Grabber : MonoBehaviour
 	public Transform normalGrabPivot;
 	public Transform closeHandGrabPivot;
 	public LayerMask grabMask;
-	public Canvas grabIconsCanvas;
+	public Canvas grabCanvas;
 	public Image[] foodIcons;
+	public float grabCanvasAnimDuration;
 	[BoxTitle("Normal Grab")]
 	public AnimationCurve grabCurveDown;
 	public AnimationCurve grabCurveUp;
@@ -37,10 +38,12 @@ public class Grabber : MonoBehaviour
 	private bool withStick;
 	private Stick_Content stick;
 	private bool finishedGrabbing = true;
+	private float grabCanvasScale;
 
 	void Awake()
 	{
-		grabIconsCanvas.gameObject.SetActive(false);
+		grabCanvas.gameObject.SetActive(false);
+		grabCanvasScale = grabCanvas.transform.localScale.x;
 
 		initPos = handPivot.localPosition;
 		initRot = handPivot.localRotation;
@@ -330,7 +333,10 @@ public class Grabber : MonoBehaviour
 			stick = null;
 		}
 
-		grabIconsCanvas.gameObject.SetActive(false);
+		if (grabCanvas.gameObject.activeSelf)
+		{
+			StartCoroutine(GrabCanvasAnim_Routine(false));
+		}
 	}
 
 	private Transform GetCorrectPivot(GameObject c)
@@ -346,7 +352,7 @@ public class Grabber : MonoBehaviour
 
 	private void ShowIcons(params Sprite[] icons)
 	{
-		grabIconsCanvas.gameObject.SetActive(true);
+		grabCanvas.gameObject.SetActive(true);
 
 		for (int i = 0; i < foodIcons.Length; i++)
 		{
@@ -359,6 +365,31 @@ public class Grabber : MonoBehaviour
 			{
 				foodIcons[i].gameObject.SetActive(false);
 			}
+		}
+
+		StartCoroutine(GrabCanvasAnim_Routine(true));
+	}
+
+	private IEnumerator GrabCanvasAnim_Routine(bool show)
+	{
+		float timePassed = 0;
+		float startValue = show ? 0 : grabCanvasScale;
+		float endValue = show ? grabCanvasScale : 0;
+
+		while(timePassed < grabCanvasAnimDuration)
+		{
+			timePassed += Time.deltaTime;
+
+			grabCanvas.transform.localScale = Vector3.one * Mathf.LerpUnclamped(startValue, endValue, timePassed / grabCanvasAnimDuration);
+
+			yield return null;
+		}
+
+		grabCanvas.transform.localScale = Vector3.one * grabCanvasScale;
+
+		if (!show)
+		{
+			grabCanvas.gameObject.SetActive(false);
 		}
 	}
 }
