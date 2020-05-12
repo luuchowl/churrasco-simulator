@@ -106,6 +106,8 @@ RectTransform:
   - {fileID: 224318209416455576}
   - {fileID: 224623832707638586}
   - {fileID: 224509028543410120}
+  - {fileID: 589227966415053801}
+  - {fileID: 8567711669481933594}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -132,6 +134,8 @@ MonoBehaviour:
     ingredients: []
   timer: {fileID: 114113906862381600}
   postIt: {fileID: 114926141922456658}
+  correctIcon: {fileID: 5084823185995490031}
+  wrongIcon: {fileID: 2554385755140679520}
   group: {fileID: 225879358585870514}
   shakeDuration: 0.3
   shakeMagnitude: 7
@@ -196,7 +200,123 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   jumpRotation: -45
-  currentTime: 5
+  correctIconAnimDuration: 0.3
+  flyUpDuration: 0.5
+  flyUpFinalPos: {x: 0, y: 100}
+  flyUpXCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  flyUpYCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: -1.026347
+      outSlope: -1.026347
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.05851064
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2.0667858
+      outSlope: 2.0667858
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.050531924
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  flyUpScaleXCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.0016937256
+      value: -0.0064086914
+      inSlope: 12.347286
+      outSlope: 12.347286
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.06902324
+    - serializedVersion: 3
+      time: 0.17479214
+      value: 1.0802671
+      inSlope: 0.025009843
+      outSlope: 0.025009843
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.09340087
+    - serializedVersion: 3
+      time: 1.0013428
+      value: 0.002960205
+      inSlope: -0.031054504
+      outSlope: -0.031054504
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.089462705
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  flyUpScaleYCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.0029296875
+      inSlope: -2.1178312
+      outSlope: -2.1178312
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.039893616
+    - serializedVersion: 3
+      time: 0.13743608
+      value: -0.24802656
+      inSlope: 0.13192931
+      outSlope: 0.13192931
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.08887418
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0.04084915
+      outSlope: 0.04084915
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.09264269
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!95 &95467448919471154
 Animator:
   serializedVersion: 3
@@ -462,6 +582,150 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+--- !u!1 &4589615902918919098
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8567711669481933594}
+  - component: {fileID: 1605748478855915611}
+  - component: {fileID: 2554385755140679520}
+  m_Layer: 5
+  m_Name: Wrong Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &8567711669481933594
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4589615902918919098}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 224696797033012114}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.118136354, y: 0.61696666}
+  m_AnchorMax: {x: 0.88186365, y: 0.9097}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1605748478855915611
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4589615902918919098}
+  m_CullTransparentMesh: 0
+--- !u!114 &2554385755140679520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4589615902918919098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 5a2fc7085f94fab46ba2f165a5448c6e, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+--- !u!1 &5140775209918156074
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 589227966415053801}
+  - component: {fileID: 6293433856666297442}
+  - component: {fileID: 5084823185995490031}
+  m_Layer: 5
+  m_Name: Correct Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &589227966415053801
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5140775209918156074}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 224696797033012114}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.118136354, y: 0.61696666}
+  m_AnchorMax: {x: 0.88186365, y: 0.9097}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &6293433856666297442
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5140775209918156074}
+  m_CullTransparentMesh: 0
+--- !u!114 &5084823185995490031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5140775209918156074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

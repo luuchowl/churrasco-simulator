@@ -144,7 +144,9 @@ public class Orders_Manager : MonoBehaviour
 		}
 		else if (currentOrders.Count > 0) 
 		{
-			currentOrders[0].RemoveAsWrong();
+			//currentOrders[0].RemoveAsWrong();
+			currentOrders[0].RemoveAsRight();
+
 			currentOrders.Remove(currentOrders[0]);
 		}
 
