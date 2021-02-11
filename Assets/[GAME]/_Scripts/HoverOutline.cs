@@ -6,7 +6,7 @@ public class HoverOutline : MonoBehaviour
 {
     public Renderer[] renderers;
 
-    private int outlineWithProperty = Shader.PropertyToID("_OutlineSize");
+    private int outlineWidthProperty = Shader.PropertyToID("_OutlineSize");
     private MaterialPropertyBlock propBlock;
 
     private void Awake()
@@ -24,7 +24,7 @@ public class HoverOutline : MonoBehaviour
         foreach (var rend in renderers)
         {
             rend.GetPropertyBlock(propBlock);
-            propBlock.SetFloat(outlineWithProperty, 1);
+            propBlock.SetFloat(outlineWidthProperty, 1);
             rend.SetPropertyBlock(propBlock);
         }
     }
@@ -34,7 +34,7 @@ public class HoverOutline : MonoBehaviour
         foreach (var rend in renderers)
         {
             rend.GetPropertyBlock(propBlock);
-            propBlock.SetFloat(outlineWithProperty, 0);
+            propBlock.SetFloat(outlineWidthProperty, 0);
             rend.SetPropertyBlock(propBlock);
         }
     }

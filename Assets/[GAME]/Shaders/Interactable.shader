@@ -2,7 +2,7 @@
 {
     Properties
     {
-        _MainTex ("Texture", 2D) = "white" {}
+        _MainTex ("Main Texture", 2D) = "white" {}
 		_Tint ("Tint", Color) = (1, 1, 1, 1)
 
 		[PerRendererData]_OutlineSize ("Outline Size", Range(0, 1)) = 1

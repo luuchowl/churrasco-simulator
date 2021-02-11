@@ -1,14 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 
-public class OrderManager_UI : MonoBehaviour
+public class HUD : MonoBehaviour
 {
     public Pool_SO order_UIPool;
     public RectTransform ordersParent;
     public Pool_SO mistakes_UIPool;
     public RectTransform mistakesParent;
+    public TMP_Text pointsText;
 
     private OrderManager orderManager;
     private List<Order_UI> orders = new List<Order_UI>();
@@ -21,6 +23,16 @@ public class OrderManager_UI : MonoBehaviour
         orderManager.orderRemoved += OnOrderRemoved;
         orderManager.orderUpdated += OnOrderUpdated;
         orderManager.orderDelivered += OnOrderDelivered;
+
+        UpdatePointsText(0);
+    }
+
+    private void OnDestroy()
+    {
+        orderManager.orderAdded -= OnOrderAdded;
+        orderManager.orderRemoved -= OnOrderRemoved;
+        orderManager.orderUpdated -= OnOrderUpdated;
+        orderManager.orderDelivered -= OnOrderDelivered;
     }
 
     private void OnOrderAdded(Order obj)
@@ -49,16 +61,17 @@ public class OrderManager_UI : MonoBehaviour
         }
     }
 
-    private void OnOrderDelivered(bool correct)
+    private void OnOrderDelivered(bool correct, int points)
     {
-        if (correct)
-        {
-
-        }
-        else
+        if (!correct)
         {
             Transform mistake = mistakes_UIPool.Request().transform;
             mistake.SetParent(mistakesParent, false);
         }
+    }
+
+    public void UpdatePointsText(int points)
+    {
+        pointsText.text = points.ToString();
     }
 }

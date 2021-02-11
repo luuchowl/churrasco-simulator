@@ -18,7 +18,7 @@ public class OrderManager : MonoBehaviour
     public event Action<Order> orderAdded;
     public event Action<Order> orderRemoved;
     public event Action<Order> orderUpdated;
-    public event Action<bool> orderDelivered;
+    public event Action<bool, int> orderDelivered;
 
     private void Awake()
     {
@@ -103,11 +103,11 @@ public class OrderManager : MonoBehaviour
         // We can compare two lists to check if all their elements are the same by using "SequenceEqual".
         // But SequeceEqual expects that the arrangement of the sequence to be equal too, so, if we don't care
         // about the arrangement of the itens, we have to manually arrange them.
-        ItemInfo[] plate = itens.Select(x => x.info).ToArray();
+        ItemInfo[] order = itens.Select(x => x.info).ToArray();
 
         if (ignoreArrangement)
         {
-            plate = plate.OrderBy(x => x.itemTag.name).ToArray();
+            order = order.OrderBy(x => x.itemTag.name).ToArray();
         }
 
         foreach (var orderWanted in currentOrders)
@@ -119,7 +119,7 @@ public class OrderManager : MonoBehaviour
                 wanted = wanted.OrderBy(x => x.itemTag.name).ToArray();
             }
 
-            if (wanted.SequenceEqual(plate))
+            if (wanted.SequenceEqual(order))
             {
                 OrderIsRight(itens);
                 RemoveOrder(orderWanted);
@@ -156,7 +156,7 @@ public class OrderManager : MonoBehaviour
         ReturnObjectsToPool(itens);
 
         Debug.Log($"Order correct! The delivery guy will take these itens [{string.Join(" - ", itensToGrab.Select(x => x.name))}]");
-        orderDelivered?.Invoke(true);
+        orderDelivered?.Invoke(true, itens.Count);
     }
 
     private void OrderIsWrong(List<Item> itens)
@@ -164,7 +164,7 @@ public class OrderManager : MonoBehaviour
         ReturnObjectsToPool(itens);
 
         Debug.Log("Order is wrong...");
-        orderDelivered?.Invoke(false);
+        orderDelivered?.Invoke(false, 0);
     }
 
     private void ReturnObjectsToPool(List<Item> itens)

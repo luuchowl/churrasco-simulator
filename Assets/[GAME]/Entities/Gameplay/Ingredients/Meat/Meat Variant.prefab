@@ -4766,7 +4766,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41e91757e1140cd4d9c5e073b977c28a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  burnTime: 5
+  wellDoneRange: {x: 1, y: 4}
+  rend: {fileID: 1881266134996787187}
   smoke: {fileID: 7404586257468327037}
+  rawTexture: {fileID: 2800000, guid: da58f7abf6af0c04bbed1687b0cf6455, type: 3}
+  wellDoneTexture: {fileID: 2800000, guid: 24e4700478f78c74eb7ab9164f164f35, type: 3}
+  burntTexture: {fileID: 2800000, guid: 925d946d67b90b145b1dc04a94558cef, type: 3}
 --- !u!1001 &9140411856084852874
 PrefabInstance:
   m_ObjectHideFlags: 0

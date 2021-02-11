@@ -30,9 +30,17 @@ public class DeliveryArea : MonoBehaviour
         {
             for (int i = 0; i < stick.grabbedItens.Count; i++)
             {
+                CookableFood food = stick.grabbedItens[i].GetComponent<CookableFood>();
+
+                //The ingredient is only valid if it's not raw nor burnt
+                if (food != null && food.state != CookState.WellDone)
+                    continue;
+
                 Item stickItem = stick.grabbedItens[i].GetComponent<Item>();
                 itens.Add(stickItem);
             }
+
+            stick.GetComponent<PoolableObject>().ReturnToPool();
         }
         else
         {
